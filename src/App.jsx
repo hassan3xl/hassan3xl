@@ -1,10 +1,10 @@
-import Home from './components/Home';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Contact from './components/Contact';
-import Resume from './components/Resume';
-import Projects from './components/Projects';
-import NotFound from './components/NotFound';
-import About from './components/About';
+import Home from "./components/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Contact from "./components/Contact";
+import Resume from "./components/Resume";
+import Projects from "./components/Projects";
+import NotFound from "./components/NotFound";
+import React from "react";
 
 const App = () => {
 	return (
@@ -13,7 +13,6 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/resume/" element={<Resume />} />
-					<Route path="/about/" element={<About />} />
 
 					<Route path="contact" element={<Contact />} />
 					<Route path="projects" element={<Projects />} />
