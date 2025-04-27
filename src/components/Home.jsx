@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import {
 	Menu,
 	X,
-	// GitHub,
 	Linkedin,
 	Mail,
 	ExternalLink,
 	ArrowRight,
+	GithubIcon,
 } from "lucide-react";
 import profileImage from "../assets/images/hassane.jpg";
 import Navbar from "./Navbar";
@@ -91,8 +91,7 @@ const Home = () => {
 										rel="noopener noreferrer"
 										className="text-slate-400 hover:text-white transition-colors"
 									>
-										{/* <GitHub size={22} /> */}
-										github
+										<GithubIcon size={22} />
 									</a>
 									<a
 										href="https://linkedin.com"
@@ -333,8 +332,7 @@ const Home = () => {
 								rel="noopener noreferrer"
 								className="text-slate-400 hover:text-white transition-colors"
 							>
-								{/* <GitHub size={18} /> */}
-								github
+								<GithubIcon size={18} />
 							</a>
 							<a
 								href="https://linkedin.com"
