@@ -7,10 +7,11 @@ import Link from "next/link";
 const FeaturedProject = [
   {
     id: 1,
-    image: "/api/placeholder/600/400",
+    link: "https://flowstack-gamma.vercel.app/",
+    image: "https://placehold.co/600x400",
     title: "FlowStack",
     description:
-      "a project management and collaboration app design with django for the backend and next js and typescript for the frontend",
+      "A project management and collaboration app design with django for the backend and next js and typescript for the frontend",
     techStack: [
       { id: 1, label: "DJango", value: "django" },
       { id: 2, label: "Next Js", value: "next-js" },
@@ -20,6 +21,7 @@ const FeaturedProject = [
   },
   {
     id: 2,
+    link: "https://flowstack-gamma.vercel.app/",
     image: "/api/placeholder/600/400",
     title: "FlowStack",
     description:
@@ -33,6 +35,7 @@ const FeaturedProject = [
   },
   {
     id: 3,
+    link: "https://flowstack-gamma.vercel.app/",
     image: "/api/placeholder/600/400",
     title: "FlowStack",
     description:
@@ -95,8 +98,8 @@ export default function HomePage() {
             About Me
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+          <div className="grid md:grid-cols-2  gap-12 items-center">
+            <div className="bg-muted p-8 h-full rounded-lg border border-border">
               <p className="text-lg text-foreground/80 leading-relaxed">
                 I'm a passionate developer with expertise in building modern web
                 applications. With a keen eye for design and a love for clean
@@ -110,26 +113,26 @@ export default function HomePage() {
                 the developer community.
               </p>
 
-              <div className="flex flex-wrap gap-3 pt-4">
-                <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+              <div className="flex flex-wrap gap-2 pt-4">
+                <span className="px-4 py-2 bg-accent text-primary rounded-full text-sm font-medium">
                   React
                 </span>
-                <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                <span className="px-4 py-2 bg-accent text-primary rounded-full text-sm font-medium">
                   Next.js
                 </span>
-                <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                <span className="px-4 py-2 bg-accent text-primary rounded-full text-sm font-medium">
                   TypeScript
                 </span>
-                <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                <span className="px-4 py-2 bg-accent text-primary rounded-full text-sm font-medium">
                   Tailwind CSS
                 </span>
-                <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                <span className="px-4 py-2 bg-accent text-primary rounded-full text-sm font-medium">
                   Python
                 </span>
               </div>
             </div>
 
-            <div className="bg-muted p-8 rounded-lg border border-border">
+            <div className="bg-muted p-8 h-full rounded-lg border border-border">
               <h3 className="text-2xl font-semibold mb-6 text-primary">
                 What I Do
               </h3>
@@ -177,7 +180,14 @@ export default function HomePage() {
                 className="bg-muted rounded-lg border border-border overflow-hidden hover:border-primary transition-colors duration-300 group"
               >
                 <div className="h-48 bg-primary/20 flex items-center justify-center">
-                  <div className="text-6xl">🚀</div>
+                  <div className="text-6xl">
+                    <Image
+                      src={project.image}
+                      alt="project image"
+                      height={10}
+                      width={10}
+                    ></Image>
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-primary transition-colors">
@@ -190,15 +200,19 @@ export default function HomePage() {
                     {project.techStack.map((t) => (
                       <span
                         key={t.id}
-                        className="text-xs px-2 py-1 bg-secondary text-secondary-foreground rounded"
+                        className="text-xs px-2 py-1 bg-secondary text-accent rounded-md"
                       >
                         {t.label}
                       </span>
                     ))}
                   </div>
-                  <Button className="w-full btn-primary hover:bg-primary">
-                    View Project
-                  </Button>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full">View Project</Button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -214,7 +228,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <div className="text-center p-6 bg-background rounded-lg border border-border">
               <div className="text-4xl mb-3">⚛️</div>
-              <h3 className="font-semibold mb-2">Frontend</h3>
+              <h3 className="font-semibold text-primary mb-2">Frontend</h3>
               <p className="text-sm text-foreground/70">
                 React, Next.js, Vue, Tailwind CSS
               </p>
@@ -222,7 +236,7 @@ export default function HomePage() {
 
             <div className="text-center p-6 bg-background rounded-lg border border-border">
               <div className="text-4xl mb-3">🔧</div>
-              <h3 className="font-semibold mb-2">Backend</h3>
+              <h3 className="font-semibold text-primary mb-2">Backend</h3>
               <p className="text-sm text-foreground/70">
                 Node.js, Express, Python, REST APIs
               </p>
@@ -230,15 +244,15 @@ export default function HomePage() {
 
             <div className="text-center p-6 bg-background rounded-lg border border-border">
               <div className="text-4xl mb-3">💾</div>
-              <h3 className="font-semibold mb-2">Database</h3>
+              <h3 className="font-semibold text-primary mb-2">Database</h3>
               <p className="text-sm text-foreground/70">
                 MongoDB, PostgreSQL, MySQL, Redis
               </p>
             </div>
 
             <div className="text-center p-6 bg-background rounded-lg border border-border">
-              <div className="text-4xl mb-3">🛠️</div>
-              <h3 className="font-semibold mb-2">Tools</h3>
+              <div className="text-4xl  mb-3">🛠️</div>
+              <h3 className="font-semibold text-primary mb-2">Tools</h3>
               <p className="text-sm text-foreground/70">
                 Git, Docker, AWS, CI/CD
               </p>

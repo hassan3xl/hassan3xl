@@ -48,7 +48,7 @@ const GitHubRepoCard = ({ repo }: GithubReposType) => {
   return (
     <div
       key={id}
-      className="group relative bg-background/70 border border-border rounded-2xl overflow-hidden 
+      className="group relative bg-background border border-border rounded-2xl overflow-hidden 
       hover:border-primary/60 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm 
       transition-all duration-300 hover:-translate-y-1"
     >
@@ -135,7 +135,7 @@ const GitHubRepoCard = ({ repo }: GithubReposType) => {
               href={homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary hover:bg-primary/90 px-3 py-1 rounded-md text-xs font-medium transition-colors"
+              className="bg-accent hover:bg-primary px-3 py-1 rounded-md text-xs font-medium transition-colors"
             >
               Live Demo
             </a>

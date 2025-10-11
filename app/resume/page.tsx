@@ -121,7 +121,7 @@ const ResumePage = () => {
                       className="mr-2 mt-1 text-primary-foreground"
                     />
                     <div>
-                      <p className="text-primary-foreground text-sm">Email</p>
+                      <p className="bg-background text-sm">Email</p>
                       <a
                         href="mailto:saiduhassanhussaine@gmail.com"
                         className="text-primary hover:text-sky-300 transition-colors"

@@ -5,6 +5,7 @@ import { Github, Search, Filter } from "lucide-react";
 import { InputField } from "@/components/input/InputField";
 import Loader from "@/components/Loader";
 import GitHubRepoCard from "@/components/cards/GitHubRepoCard";
+import { Button } from "@/components/ui/button";
 
 type TectStack = {};
 export interface GitHubRepoProps {
@@ -97,7 +98,7 @@ const ProjectsPage = () => {
           </div>
 
           {/* Search and Filter Controls */}
-          <div className="mb-12 flex flex-col md:flex-row gap-4">
+          <div className="mb-12 flex bg-background flex-col md:flex-row gap-4">
             <div className="relative flex-grow">
               <InputField
                 field="input"
@@ -129,21 +130,21 @@ const ProjectsPage = () => {
 
           {/* Error State */}
           {error && (
-            <div className="bg-red-900/30 border border-red-700 rounded-lg p-6 text-center">
-              <p className="text-red-300 text-lg">Error: {error}</p>
-              <button
+            <div className="bg-accent border border-red-700 rounded-lg p-6 text-center">
+              <p className="text-primary text-lg">Error: {error}</p>
+              <Button
                 className="mt-4 px-4 py-2 bg-red-700 hover:bg-red-600 rounded-md  font-medium"
                 onClick={() => fetchRepos()}
               >
                 Try Again
-              </button>
+              </Button>
             </div>
           )}
 
           {/* Projects Grid */}
           {!loading && !error && filteredRepos.length > 0 && (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredRepos.map((repo) => (
+            <div className="grid bg-background md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredRepos.slice(0, 9).map((repo) => (
                 <GitHubRepoCard repo={repo} key={repo.id} />
               ))}
             </div>
@@ -163,7 +164,7 @@ const ProjectsPage = () => {
                 href="https://github.com/hassan3xl"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 btn-primary rounded-lg  transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-accent text-primary rounded-lg  transition-colors"
               >
                 <Github size={18} className="mr-2" /> View More on GitHub
               </a>

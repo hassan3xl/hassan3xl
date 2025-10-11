@@ -52,7 +52,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
   const getContainerClasses = () => {
     const baseClasses =
-      "relative flex items-center border-2 rounded-xl transition-all duration-300";
+      "relative flex items-center border border-border rounded-xl transition-all duration-300";
     const stateClasses = error
       ? "border-red-500 bg-red-50 dark:bg-red-950/20"
       : success
@@ -77,7 +77,7 @@ const InputField: React.FC<InputFieldProps> = ({
     switch (field) {
       case "textarea": {
         const fieldClass =
-          `flex-1 px-4 py-2 bg-transparent outline-none text-foreground placeholder-foreground/40 resize-none ${incomingClassName}`.trim();
+          `flex-1 px-4 py-2 bg-muted outline-none text-foreground placeholder-foreground/40 resize-none ${incomingClassName}`.trim();
         return (
           <div className={getContainerClasses()}>
             {Icon && (
@@ -162,7 +162,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
       case "select": {
         const selectClass =
-          `w-full px-4 py-2 bg-transparent outline-none text-foreground appearance-none cursor-pointer pr-10 ${incomingClassName}`.trim();
+          `w-full px-4 py-2 bg-muted outline-none text-foreground appearance-none cursor-pointer pr-10 ${incomingClassName}`.trim();
 
         return (
           <div className={`${getContainerClasses()} relative`}>
@@ -252,7 +252,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
       case "calendar": {
         const fieldClass =
-          `flex-1 px-4 py-2 bg-transparent outline-none text-foreground placeholder-foreground/40 ${incomingClassName}`.trim();
+          `flex-1 px-4 py-2 bg-muted outline-none text-foreground placeholder-foreground/40 ${incomingClassName}`.trim();
         return (
           <div className={getContainerClasses()}>
             {Icon && <Icon size={20} className={`ml-4 ${getIconClasses()}`} />}
@@ -272,7 +272,8 @@ const InputField: React.FC<InputFieldProps> = ({
 
       default: {
         const fieldClass =
-          `flex-1 px-4 py-2 bg-transparent outline-none text-foreground placeholder-foreground/40 ${incomingClassName}`.trim();
+          `flex-1 px-4 py-2 bg-muted outline-none text-foreground placeholder-foreground/40 ${incomingClassName}`.trim();
+
         return (
           <div className={getContainerClasses()}>
             {Icon && <Icon size={20} className={`ml-4 ${getIconClasses()}`} />}
@@ -306,7 +307,7 @@ const InputField: React.FC<InputFieldProps> = ({
   return (
     <div className="relative mb-6 w-full">
       {label && field !== "checkbox" && (
-        <label className="block mb-2 text-sm font-medium text-foreground">
+        <label className="block mb-2 text-sm font-medium text-foreground text-left">
           {label}
         </label>
       )}

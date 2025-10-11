@@ -42,19 +42,19 @@
     --color-ring: 210 90% 60%;
   }
 
-  /* Blue theme */
-  .blue {
-    --color-background: 210 100% 97%;
-    --color-foreground: 220 30% 10%;
-    --color-primary: 215 98% 55%;
+  /* Green theme */
+  .green {
+    --color-background: 140 50% 97%;
+    --color-foreground: 140 40% 10%;
+    --color-primary: 142 76% 36%;
     --color-primary-foreground: 0 0% 100%;
-    --color-secondary: 215 20% 88%;
-    --color-secondary-foreground: 220 30% 15%;
-    --color-muted: 210 40% 94%;
-    --color-accent: 215 30% 92%;
-    --color-border: 215 25% 85%;
-    --color-input: 215 25% 85%;
-    --color-ring: 215 98% 55%;
+    --color-secondary: 140 20% 88%;
+    --color-secondary-foreground: 140 30% 15%;
+    --color-muted: 140 30% 94%;
+    --color-accent: 140 25% 92%;
+    --color-border: 140 20% 85%;
+    --color-input: 140 20% 85%;
+    --color-ring: 142 76% 36%;
   }
 
   /* Purple theme */

@@ -118,16 +118,16 @@ export default function ThemePage() {
                 Button Variants
               </h4>
               <div className="flex flex-wrap gap-3">
-                <Button className="bg-primary text-primary-foreground hover:bg-primary">
-                  Primary Button
+                <Button className="hover:bg-primary">
+                  Primary / default Button
                 </Button>
-                <Button className="bg-secondary text-secondary-foreground hover:bg-secondary">
+                <Button className="" variant="secondary">
                   Secondary Button
                 </Button>
                 <Button className="bg-accent text-foreground hover:bg-accent">
                   Accent Button
                 </Button>
-                <Button className="border border-border bg-background hover:bg-accent">
+                <Button className="" variant="outline">
                   Outline Button
                 </Button>
               </div>
@@ -175,7 +175,7 @@ export default function ThemePage() {
         </section>
 
         {/* Usage Instructions */}
-        <section className="bg-accent p-8 rounded-lg border">
+        <section className="bg-accent p-8 rounded-lg border border-border">
           <h2 className="text-2xl font-bold mb-4">How to Use Themes</h2>
           <div className="space-y-4 text-foreground/90">
             <p>

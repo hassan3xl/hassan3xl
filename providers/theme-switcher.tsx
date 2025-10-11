@@ -18,7 +18,7 @@ export function ThemeSwitcher() {
   useEffect(() => {
     if (theme === "light" || theme === "dark") {
       document.documentElement.className = theme;
-    } else if (theme === "blue" || theme === "purple") {
+    } else if (theme === "green" || theme === "purple") {
       document.documentElement.className = theme;
     }
   }, [theme]);
@@ -29,7 +29,7 @@ export function ThemeSwitcher() {
   const themes = [
     { key: "light", name: "Light", icon: <Sun className="mr-2 h-4 w-4" /> },
     { key: "dark", name: "Dark", icon: <Moon className="mr-2 h-4 w-4" /> },
-    { key: "blue", name: "Blue", icon: <Palette className="mr-2 h-4 w-4" /> },
+    { key: "green", name: "Green", icon: <Palette className="mr-2 h-4 w-4" /> },
     {
       key: "purple",
       name: "Purple",
@@ -49,7 +49,7 @@ export function ThemeSwitcher() {
           <DropdownMenuItem
             key={t.key}
             onClick={() => setTheme(t.key)}
-            className={theme === t.key ? "font-semibold" : ""}
+            className={theme === t.key ? "font-semibold text-primary" : ""}
             aria-checked={theme === t.key}
           >
             {t.icon}
