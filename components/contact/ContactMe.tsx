@@ -52,7 +52,7 @@ const ContactMe = () => {
 
   return (
     <div>
-      <div className="p-4 text-center border-t">
+      <div className="text-center border-t">
         <h2 className="text-4xl pt-6 font-bold mb-6">Let's Work Together</h2>
         <p className="text-lg text-foreground/70 mb-8">
           I'm always open to discussing new projects, creative ideas, or

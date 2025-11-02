@@ -23,35 +23,35 @@ const FeaturedProject = [
     id: 2,
     link: "https://flowstack-gamma.vercel.app/",
     image: "/api/placeholder/600/400",
-    title: "FlowStack",
+    title: "SubsManager",
     description:
-      "a project management and collaboration app design with django for the backend and next js and typescript for the frontend",
+      "a subscription management with admin previlage where users can go and subscribe to their any of our services, ",
     techStack: [
-      { id: 1, label: "DJango", value: "django" },
+      { id: 1, label: "Express", value: "express" },
       { id: 2, label: "Next Js", value: "next-js" },
       { id: 3, label: "TypeScript", value: "typescript" },
-      { id: 4, label: "Python", value: "python" },
     ],
   },
   {
     id: 3,
-    link: "https://flowstack-gamma.vercel.app/",
+    link: "https://ebuy-frontend.vercel.app/",
     image: "/api/placeholder/600/400",
-    title: "FlowStack",
+    title: "Ebuy Store",
     description:
-      "a project management and collaboration app design with django for the backend and next js and typescript for the frontend",
+      "an ecomerce microservice application design with django and express for the backend and next js and typescript for the frontend",
     techStack: [
       { id: 1, label: "DJango", value: "django" },
       { id: 2, label: "Next Js", value: "next-js" },
       { id: 3, label: "TypeScript", value: "typescript" },
       { id: 4, label: "Python", value: "python" },
+      { id: 5, label: "Express", value: "express" },
     ],
   },
 ];
 export default function HomePage() {
   return (
     <div className="min-h-screen ">
-      <main className="max-w-6xl mx-auto px-4">
+      <main className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <section className="min-h-[80vh] flex flex-col justify-center items-center text-center py-20">
           <div className="mb-6">
@@ -86,8 +86,8 @@ export default function HomePage() {
             <Button className="btn-primary text-lg px-8 py-6">
               <Link href="/projects">View My Work</Link>
             </Button>
-            <Button className="bg-secondary text-primary hover:bg-secondary text-lg px-8 py-6">
-              <Link href="/projects">Contact Me</Link>
+            <Button className="btn-primary text-lg px-8 py-6">
+              <Link href="/resume">View My Resume</Link>
             </Button>
           </div>
         </section>

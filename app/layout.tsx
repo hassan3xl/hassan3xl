@@ -26,9 +26,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <main className=" transition-colors duration-300">
-              <Navbar />
+            <Navbar />
 
+            <main className="px-4 sm:px-6 transition-colors duration-300">
               {children}
               <Footer />
             </main>

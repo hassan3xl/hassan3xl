@@ -11,14 +11,12 @@ import {
   Github,
   Linkedin,
   Phone,
-  ArrowRight,
   BookOpen,
   Briefcase,
   Code,
   Award,
 } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { skills } from "@/lib/utils";
 
 const ResumePage = () => {
   const [activeSection, setActiveSection] = useState("all");
@@ -29,21 +27,6 @@ const ResumePage = () => {
     { id: "experience", label: "Experience", icon: <Briefcase size={16} /> },
     { id: "education", label: "Education", icon: <BookOpen size={16} /> },
     { id: "skills", label: "Skills", icon: <Code size={16} /> },
-    { id: "projects", label: "Projects", icon: <Award size={16} /> },
-  ];
-
-  // Skills data
-  const skills = [
-    { name: "Python", level: 90 },
-    { name: "JavaScript", level: 85 },
-    { name: "Django", level: 90 },
-    { name: "React", level: 80 },
-    { name: "Next.js", level: 75 },
-    { name: "Remix", level: 70 },
-    { name: "Express", level: 75 },
-    { name: "Flask", level: 85 },
-    { name: "Tailwind CSS", level: 85 },
-    { name: "Git", level: 80 },
   ];
 
   // Show section based on filter
@@ -54,7 +37,7 @@ const ResumePage = () => {
   return (
     <div className="">
       <main className="pt-24 pb-20">
-        <div className="container mx-auto max-w-5xl px-6">
+        <div className="container mx-auto max-w-5xl">
           {/* Resume Header */}
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6">
             <div>
@@ -116,12 +99,9 @@ const ResumePage = () => {
                 </h2>
                 <ul className="space-y-4">
                   <li className="flex items-start">
-                    <Mail
-                      size={16}
-                      className="mr-2 mt-1 text-primary-foreground"
-                    />
+                    <Mail size={16} className="mr-2 mt-1 text-primary" />
                     <div>
-                      <p className="bg-background text-sm">Email</p>
+                      <p className="text-primary text-sm">Email</p>
                       <a
                         href="mailto:saiduhassanhussaine@gmail.com"
                         className="text-primary hover:text-sky-300 transition-colors"
@@ -131,12 +111,9 @@ const ResumePage = () => {
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <Github
-                      size={16}
-                      className="mr-2 mt-1 text-primary-foreground"
-                    />
+                    <Github size={16} className="mr-2 mt-1 text-primary" />
                     <div>
-                      <p className="text-primary-foreground text-sm">GitHub</p>
+                      <p className="text-primary text-sm">GitHub</p>
                       <a
                         href="https://github.com/hassan3xl"
                         target="_blank"
@@ -148,14 +125,9 @@ const ResumePage = () => {
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <Linkedin
-                      size={16}
-                      className="mr-2 mt-1 text-primary-foreground"
-                    />
+                    <Linkedin size={16} className="mr-2 mt-1 text-primary" />
                     <div>
-                      <p className="text-primary-foreground text-sm">
-                        LinkedIn
-                      </p>
+                      <p className="text-primary text-sm">LinkedIn</p>
                       <a
                         href="https://linkedin.com/in/hassan3xl"
                         target="_blank"
@@ -167,12 +139,9 @@ const ResumePage = () => {
                     </div>
                   </li>
                   <li className="flex items-start">
-                    <Phone
-                      size={16}
-                      className="mr-2 mt-1 text-primary-foreground"
-                    />
+                    <Phone size={16} className="mr-2 mt-1 text-primary" />
                     <div>
-                      <p className="text-primary-foreground text-sm">Phone</p>
+                      <p className="text-primary text-sm">Phone</p>
                       <a
                         href="tel:+2349160807885"
                         className="text-primary hover:text-sky-300 transition-colors"
@@ -196,7 +165,7 @@ const ResumePage = () => {
                       <li key={skill.name}>
                         <div className="flex justify-between mb-1">
                           <span className="font-medium">{skill.name}</span>
-                          <span className="text-primary-foreground text-sm">
+                          <span className="text-primary text-sm">
                             {skill.level}%
                           </span>
                         </div>
@@ -225,12 +194,10 @@ const ResumePage = () => {
                       <h3 className="text-lg font-semibold text-primary">
                         Bachelor's Degree in Computer Science
                       </h3>
-                      <p className="text-primary-foreground">
+                      <p className="text-primary">
                         Modibbo Adam University, Yola
                       </p>
-                      <p className="text-primary-foreground text-sm">
-                        2022 - Present
-                      </p>
+                      <p className="text-primary text-sm">2022 - Present</p>
                     </div>
                   </div>
                 </div>
@@ -252,7 +219,7 @@ const ResumePage = () => {
                       <h3 className="text-lg font-semibold text-primary">
                         Freelance Developer
                       </h3>
-                      <p className="text-primary-foreground text-sm mb-2">
+                      <p className="text-primary text-sm mb-2">
                         2023 - Present
                       </p>
                       <p className=" mb-3">
@@ -280,9 +247,7 @@ const ResumePage = () => {
                       <h3 className="text-lg font-semibold text-primary">
                         Intern - Software Development
                       </h3>
-                      <p className="text-primary-foreground text-sm mb-2">
-                        Summer 2024
-                      </p>
+                      <p className="text-primary text-sm mb-2">Summer 2024</p>
                       <p className=" mb-3">
                         Worked on building and optimizing APIs with Django Rest
                         Framework and integrated them with React frontends for
@@ -318,12 +283,10 @@ const ResumePage = () => {
                     <h3 className="text-lg font-semibold text-primary">
                       Bachelor's Degree in Computer Science
                     </h3>
-                    <p className="text-primary-foreground">
+                    <p className="text-primary">
                       Modibbo Adam University, Yola
                     </p>
-                    <p className="text-primary-foreground text-sm mb-2">
-                      2022 - Present
-                    </p>
+                    <p className="text-primary text-sm mb-2">2022 - Present</p>
                     <p className="">
                       Focusing on software engineering principles, algorithms,
                       and modern web development technologies.
@@ -337,148 +300,6 @@ const ResumePage = () => {
                         Development, Operating Systems
                       </p>
                     </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Projects Section */}
-              {shouldShowSection("projects") && (
-                <div className=" backdrop-blur-sm border border-input rounded-xl p-6">
-                  <h2 className="text-xl font-bold text-primary mb-6 flex items-center">
-                    <Award size={18} className="mr-2 text-primary" /> Notable
-                    Projects
-                  </h2>
-                  <div className="space-y-6">
-                    <div className="group">
-                      <h3 className="text-lg font-semibold text-primary group-hover:text-primary transition-colors">
-                        Mining Telegram Bot
-                      </h3>
-                      <p className=" mb-2">
-                        A feature-rich bot for mining projects built with Django
-                        and Python, incorporating blockchain integrations and
-                        automated user rewards.
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-2">
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Python
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Django
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Telegram API
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Blockchain
-                        </span>
-                      </div>
-                      <a
-                        href="#"
-                        className="text-primary hover:text-sky-300 transition-colors text-sm flex items-center"
-                      >
-                        View Project <ArrowRight size={14} className="ml-1" />
-                      </a>
-                    </div>
-
-                    <div className="group">
-                      <h3 className="text-lg font-semibold text-primary group-hover:text-primary transition-colors">
-                        MercaNest Telegram Marketplace
-                      </h3>
-                      <p className=" mb-2">
-                        A marketplace where buyers and sellers can become
-                        merchants, facilitating peer-to-peer transactions
-                        through a Telegram interface.
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-2">
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Python
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Django
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          PostgreSQL
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Telegram API
-                        </span>
-                      </div>
-                      <a
-                        href="#"
-                        className="text-primary hover:text-sky-300 transition-colors text-sm flex items-center"
-                      >
-                        View Project <ArrowRight size={14} className="ml-1" />
-                      </a>
-                    </div>
-
-                    <div className="group">
-                      <h3 className="text-lg font-semibold text-primary group-hover:text-primary transition-colors">
-                        Quantum Stack
-                      </h3>
-                      <p className=" mb-2">
-                        A cutting-edge coding solution that brings ideas to
-                        life, offering a wide range of services to tackle any
-                        software challenge.
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-2">
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          React
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Django
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Tailwind
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          AWS
-                        </span>
-                      </div>
-                      <a
-                        href="#"
-                        className="text-primary hover:text-sky-300 transition-colors text-sm flex items-center"
-                      >
-                        View Project <ArrowRight size={14} className="ml-1" />
-                      </a>
-                    </div>
-
-                    <div className="group">
-                      <h3 className="text-lg font-semibold text-primary group-hover:text-primary transition-colors">
-                        Portfolio Website
-                      </h3>
-                      <p className=" mb-2">
-                        A personal portfolio website showcasing my skills and
-                        projects, built with React and Tailwind CSS with a focus
-                        on modern UI principles.
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-2">
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          React
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Tailwind CSS
-                        </span>
-                        <span className="text-xs px-2 py-1 bg-slate-700/70 text-slate-200 rounded-full">
-                          Responsive Design
-                        </span>
-                      </div>
-                      <Link
-                        href="/projects"
-                        className="text-primary hover:text-sky-300 transition-colors text-sm flex items-center"
-                      >
-                        View Project <ArrowRight size={14} className="ml-1" />
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 flex justify-center">
-                    <Link
-                      href="/projects"
-                      className="inline-flex items-center px-6 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-primary rounded-md font-medium transition-colors"
-                    >
-                      View All Projects{" "}
-                      <ExternalLink size={16} className="ml-2" />
-                    </Link>
                   </div>
                 </div>
               )}
