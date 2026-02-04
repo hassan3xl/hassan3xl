@@ -12,9 +12,9 @@ interface GradientTextProps {
 export const GradientText = ({
   children,
   className,
-  from = "from-primary",
-  via = "via-purple-500",
-  to = "to-pink-600",
+  from = "from-white",
+  via = "via-zinc-400",
+  to = "to-zinc-600",
   animate = false,
 }: GradientTextProps) => {
   return (

@@ -5,7 +5,7 @@ import { GradientText } from "@/components/ui/GradientText";
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 relative">
+    <section id="skills" className="py-24 relative overflow-x-clip">
       <div className="absolute inset-0 bg-primary/5 -skew-y-3 -z-10 transform origin-left" />
 
       <div className="max-w-6xl mx-auto px-4">

@@ -12,10 +12,10 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#projects", label: "Projects" },
-    { href: "#skills", label: "Skills" },
-    { href: "#contact", label: "Contact" },
+    { href: "/about", label: "About" },
+    { href: "/projects", label: "Projects" },
+    { href: "/resume", label: "Resume" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -62,7 +62,8 @@ export function Navbar() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="absolute top-20 left-4 right-4 glass p-6 rounded-xl flex flex-col gap-4 md:hidden"
+          style={{ width: "calc(100% - 2rem)" }}
+          className="absolute top-20 left-4 right-4 glass p-6 rounded-xl flex flex-col gap-4 md:hidden z-50 bg-background/95 backdrop-blur-xl border border-border/50"
         >
           {navLinks.map((link) => (
             <Link

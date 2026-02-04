@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation, type Variant } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion";
 
 interface RevealProps {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ interface RevealProps {
 
 export const Reveal = ({
   children,
-  width = "fit-content",
+  width = "100%",
   className = "",
   delay = 0.25,
   duration = 0.5,
@@ -38,10 +38,15 @@ export const Reveal = ({
       visible: { opacity: 1, scale: 1 },
     };
 
-    if (direction === "up") variants.hidden.y = 75;
-    if (direction === "down") variants.hidden.y = -75;
-    if (direction === "left") variants.hidden.x = 75;
-    if (direction === "right") variants.hidden.x = -75;
+    // Reduced distances to prevent overflowing on mobile
+    if (direction === "up") variants.hidden.y = 50;
+    if (direction === "down") variants.hidden.y = -50;
+
+    // On mobile, horizontal animations can cause overflow issues.
+    // We'll use smaller values or stick to vertical where possible via CSS classes in usage,
+    // but here we reduce the offset significantly.
+    if (direction === "left") variants.hidden.x = 20;
+    if (direction === "right") variants.hidden.x = -20;
 
     if (blur) variants.hidden.filter = "blur(10px)";
     variants.visible.filter = "blur(0px)";
@@ -52,7 +57,7 @@ export const Reveal = ({
   return (
     <div
       ref={ref}
-      style={{ position: "relative", width, overflow: "hidden" }}
+      style={{ position: "relative", width, overflow: "visible" }}
       className={className}
     >
       <motion.div

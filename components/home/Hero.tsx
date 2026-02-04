@@ -4,97 +4,112 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/Reveal";
-import { GradientText } from "@/components/ui/GradientText";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Download } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="min-h-[85vh] flex flex-col justify-center items-center text-center py-20 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl -z-10 opacity-30 animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl -z-10 opacity-30 animate-pulse delay-1000" />
+    <section className="min-h-[90vh] flex flex-col justify-center items-center text-center py-12 md:py-20 relative overflow-hidden">
+      {/* Dynamic Background - Subtle Dark */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-background to-background" />
 
-      <div className="mb-8 relative z-10">
-        <Reveal>
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-br from-primary via-purple-500 to-pink-600 mx-auto mb-6">
-            <div className="w-full h-full rounded-full overflow-hidden border-4 border-background bg-background relative">
-              <Image
-                src="/hassane.jpg"
-                fill
-                alt="Hassan Saidu"
-                className="object-cover"
-                priority
-              />
+      <div className="container px-4 md:px-6 relative z-10 flex flex-col items-center">
+        {/* Status Badge */}
+        <Reveal delay={0}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full glass-card mb-6 md:mb-8 border-border/40 bg-zinc-900/30">
+            <span className="relative flex h-2.5 w-2.5 md:h-3 md:w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-full w-full bg-emerald-500"></span>
+            </span>
+            <span className="text-xs md:text-sm font-medium text-foreground/80">
+              Available for Opportunities
+            </span>
+          </div>
+        </Reveal>
+
+        {/* Profile Image */}
+        <Reveal delay={0.1}>
+          <div className="relative mb-6 md:mb-8 group">
+            <div className="relative w-28 h-28 md:w-40 md:h-40 rounded-full p-[2px] bg-gradient-to-b from-zinc-700 to-transparent">
+              <div className="w-full h-full rounded-full overflow-hidden bg-zinc-950 relative">
+                <Image
+                  src="/hassane.jpg"
+                  fill
+                  alt="Hassan Saidu"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  priority
+                />
+              </div>
             </div>
+          </div>
+        </Reveal>
+
+        {/* Main Heading */}
+        <Reveal delay={0.2}>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-6 leading-[1.1]">
+            Building the <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500">
+              Digital Future
+            </span>
+          </h1>
+        </Reveal>
+
+        {/* Subheading */}
+        <Reveal delay={0.3}>
+          <p className="max-w-xl md:max-w-2xl text-base md:text-xl text-muted-foreground mb-8 md:mb-10 leading-relaxed mx-auto px-2">
+            I'm{" "}
+            <span className="font-semibold text-foreground">Hassan Saidu</span>,
+            a Full Stack Developer transforming ideas into exceptional digital
+            experiences. Specialized in Next.js, React, and Modern UI.
+          </p>
+        </Reveal>
+
+        {/* Social Links */}
+        <Reveal delay={0.5}>
+          <div className="flex gap-4 md:gap-6 justify-center items-center">
+            {[
+              {
+                href: "https://github.com/hassan3xl",
+                icon: Github,
+                label: "GitHub",
+              },
+              {
+                href: "https://linkedin.com/in/hassan3xl",
+                icon: Linkedin,
+                label: "LinkedIn",
+              },
+              {
+                href: "mailto:contact@hassan3xl.com",
+                icon: Mail,
+                label: "Email",
+              },
+            ].map((social, idx) => (
+              <a
+                key={idx}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
+                className="p-3 rounded-full hover:bg-white/5 border border-transparent hover:border-white/10 text-muted-foreground hover:text-foreground transition-all duration-300"
+              >
+                <social.icon className="w-5 h-5 md:w-6 md:h-6" />
+              </a>
+            ))}
           </div>
         </Reveal>
       </div>
 
-      <Reveal delay={0.1}>
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-          Hi, I'm <GradientText animate>Hassan Saidu</GradientText>
-        </h1>
-      </Reveal>
-
-      <Reveal delay={0.2}>
-        <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-medium">
-          Full Stack Developer & Designer
-        </p>
-      </Reveal>
-
-      <Reveal delay={0.3}>
-        <p className="max-w-2xl text-lg text-muted-foreground/80 mb-10 leading-relaxed mx-auto">
-          I build beautiful, functional web applications with modern
-          technologies. Passionate about creating seamless user experiences and
-          writing clean, maintainable code.
-        </p>
-      </Reveal>
-
-      <Reveal delay={0.4}>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <Link href="#projects">
-            <Button size="lg" className="rounded-full px-8 text-lg h-12">
-              View My Work <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
-          <Link href="/resume">
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full px-8 text-lg h-12 bg-background/50 backdrop-blur-sm"
-            >
-              View My Resume
-            </Button>
-          </Link>
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ delay: 2, duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
+      >
+        <div className="w-5 h-9 md:w-6 md:h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center p-2">
+          <div className="w-1 h-3 bg-muted-foreground/50 rounded-full" />
         </div>
-      </Reveal>
-
-      <Reveal delay={0.5}>
-        <div className="flex gap-6 justify-center">
-          <a
-            href="https://github.com/hassan3xl"
-            target="_blank"
-            rel="noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200"
-          >
-            <Github className="w-8 h-8" />
-          </a>
-          <a
-            href="https://linkedin.com/in/hassan3xl"
-            target="_blank"
-            rel="noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200"
-          >
-            <Linkedin className="w-8 h-8" />
-          </a>
-          <a
-            href="mailto:contact@hassan3xl.com"
-            className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform duration-200"
-          >
-            <Mail className="w-8 h-8" />
-          </a>
-        </div>
-      </Reveal>
+      </motion.div>
     </section>
   );
 }

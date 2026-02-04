@@ -1,148 +1,24 @@
 "use client";
+
+import * as React from "react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuLabel,
-} from "@/components/ui/dropdown-menu";
-import { Sun, Moon, Palette, Check, Sparkles } from "lucide-react";
 
 export function ThemeSwitcher() {
-  const { theme, setTheme, systemTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!theme) return;
-    document.documentElement.className = theme;
-  }, [theme]);
-
-  // Get the actual active theme (accounting for system preference)
-  const activeTheme = theme === "system" ? systemTheme : theme;
-
-  const themes = [
-    {
-      key: "light",
-      name: "Light",
-      icon: Sun,
-    },
-    {
-      key: "dark",
-      name: "Dark",
-      icon: Moon,
-    },
-    {
-      key: "purple",
-      name: "Purple",
-      icon: Palette,
-    },
-    {
-      key: "green",
-      name: "Green",
-      icon: Palette,
-    },
-  ];
-
-  // Dynamic button icon based on active theme
-  const ButtonIcon = () => {
-    if (!mounted) return <Palette className="h-5 w-5" />;
-
-    switch (activeTheme) {
-      case "light":
-        return <Sun className="h-5 w-5 text-amber-500" />;
-      case "dark":
-        return <Moon className="h-5 w-5 text-blue-400" />;
-      default:
-        return <Palette className="h-5 w-5" />;
-    }
-  };
-
-  if (!mounted) {
-    return (
-      <Button
-        size="icon"
-        variant="outline"
-        aria-label="Change theme"
-        disabled
-        className="relative overflow-hidden"
-      >
-        <Palette className="h-5 w-5" />
-      </Button>
-    );
-  }
+  const { theme, setTheme } = useTheme();
 
   return (
-    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-      <DropdownMenuTrigger asChild>
-        <Button
-          size="icon"
-          variant="outline"
-          aria-label="Change theme"
-          className="relative overflow-hidden transition-all duration-200 hover:scale-105"
-        >
-          <div className="transition-transform duration-300">
-            <ButtonIcon />
-          </div>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
-        <DropdownMenuLabel className="flex items-center gap-2">
-          <Sparkles className="h-4 w-4" />
-          Appearance
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {themes.map((t) => {
-          const Icon = t.icon;
-          const isActive = theme === t.key;
-
-          return (
-            <DropdownMenuItem
-              key={t.key}
-              onClick={() => {
-                setTheme(t.key);
-                // Optional: close dropdown after selection
-                setTimeout(() => setIsOpen(false), 150);
-              }}
-              className={`cursor-pointer transition-colors ${
-                isActive ? "bg-accent" : ""
-              }`}
-            >
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center gap-3">
-                  <Icon
-                    className={`h-4 w-4 ${
-                      isActive
-                        ? t.key === "light"
-                          ? "text-amber-500"
-                          : t.key === "dark"
-                            ? "text-blue-400"
-                            : "text-primary"
-                        : "text-muted-foreground"
-                    }`}
-                  />
-                  <div className="flex flex-col">
-                    <span className={isActive ? "font-semibold" : ""}>
-                      {t.name}
-                    </span>
-                  </div>
-                </div>
-                {isActive && (
-                  <Check className="h-4 w-4 text-primary animate-in fade-in zoom-in duration-200" />
-                )}
-              </div>
-            </DropdownMenuItem>
-          );
-        })}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="rounded-full w-9 h-9 border border-border/50"
+    >
+      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <span className="sr-only">Toggle theme</span>
+    </Button>
   );
 }

@@ -9,26 +9,38 @@ import {
   Github,
   Calendar,
 } from "lucide-react";
-import GitHubRepoPr, { GitHubRepoProps } from "@/app/projects/page";
 
-type GithubReposType = { repo: GitHubRepoProps };
-const GitHubRepoCard = ({ repo }: GithubReposType) => {
-  const {
-    id,
-    name,
-    description,
-    stargazers_count,
-    forks_count,
-    watchers_count,
-    language,
-    languageColor = "#3178c6",
-    techStack = [],
-    updatedAt,
-    html_url,
-    homepage,
-    isPrivate = false,
-  } = repo;
+interface GithubRepoProps {
+  id: number;
+  name: string;
+  description?: string;
+  stargazers_count: number;
+  forks_count: number;
+  watchers_count: number;
+  language?: string;
+  languageColor?: string;
+  techStack?: string[];
+  updatedAt?: string;
+  html_url: string;
+  homepage?: string;
+  isPrivate?: boolean;
+}
 
+const GitHubRepoCard = ({
+  id,
+  name,
+  description,
+  stargazers_count,
+  forks_count,
+  watchers_count,
+  language,
+  languageColor = "#3178c6",
+  techStack = [],
+  updatedAt,
+  html_url,
+  homepage,
+  isPrivate = false,
+}: GithubRepoProps) => {
   const formatDate = (date: string) => {
     if (!date) return "";
     const d = new Date(date);
@@ -53,10 +65,10 @@ const GitHubRepoCard = ({ repo }: GithubReposType) => {
       transition-all duration-300 hover:-translate-y-1"
     >
       {/* Top Glow Accent */}
-      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-zinc-500/20 via-white/50 to-zinc-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
 
       {/* Repo Thumbnail */}
-      <div className="aspect-video bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center">
+      <div className="aspect-video bg-gradient-to-br from-zinc-800/20 to-zinc-600/20 flex items-center justify-center">
         <Github
           size={36}
           className="text-primary transition-colors duration-300"

@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  // run server on port 5000
+
   images: {
     remotePatterns: [
       {
