@@ -11,29 +11,15 @@ export function Hero() {
   return (
     <section className="min-h-[90vh] flex flex-col justify-center items-center text-center py-12 md:py-20 relative overflow-hidden">
       {/* Dynamic Background - Subtle Dark */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/20 via-background to-background" />
 
       <div className="container px-4 md:px-6 relative z-10 flex flex-col items-center">
-        {/* Status Badge */}
-        <Reveal delay={0}>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full glass-card mb-6 md:mb-8 border-border/40 bg-zinc-900/30">
-            <span className="relative flex h-2.5 w-2.5 md:h-3 md:w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-full w-full bg-emerald-500"></span>
-            </span>
-            <span className="text-xs md:text-sm font-medium text-foreground/80">
-              Available for Opportunities
-            </span>
-          </div>
-        </Reveal>
-
         {/* Profile Image */}
         <Reveal delay={0.1}>
           <div className="relative mb-6 md:mb-8 group">
             <div className="relative w-28 h-28 md:w-40 md:h-40 rounded-full p-[2px] bg-gradient-to-b from-zinc-700 to-transparent">
               <div className="w-full h-full rounded-full overflow-hidden bg-zinc-950 relative">
                 <Image
-                  src="/hassane.jpg"
+                  src="/hassane.png"
                   fill
                   alt="Hassan Saidu"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
