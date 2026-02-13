@@ -354,32 +354,28 @@ const ResumePage = () => {
                   <div className="space-y-6">
                     {[
                       {
-                        title: "Mining Telegram Bot",
+                        title: "eBuy",
                         description:
-                          "A feature-rich bot for mining projects built with Django and Python, incorporating blockchain integrations and automated user rewards.",
+                          "A multi-vendor e-commerce marketplace where independent sellers list, manage, and sell products to a shared customer base — featuring vendor dashboards, secure checkout, and real-time order tracking.",
                         tech: [
                           "Python",
                           "Django",
-                          "Telegram API",
-                          "Blockchain",
+                          "Next.js",
+                          "Express",
+                          "TypeScript",
                         ],
                       },
                       {
-                        title: "MercaNest Telegram Marketplace",
+                        title: "WorkN",
                         description:
-                          "A marketplace where buyers and sellers can become merchants, facilitating peer-to-peer transactions through Telegram.",
-                        tech: [
-                          "Python",
-                          "Django",
-                          "PostgreSQL",
-                          "Telegram API",
-                        ],
+                          "A collaborative workspace platform for teams to manage projects, track tasks, and communicate in real time — designed to streamline remote and hybrid workflows.",
+                        tech: ["Python", "Django", "Next.js", "TypeScript"],
                       },
                       {
-                        title: "Quantum Stack",
+                        title: "SubSync",
                         description:
-                          "A cutting-edge coding solution that brings ideas to life, offering a wide range of services to tackle any software challenge.",
-                        tech: ["React", "Django", "Tailwind", "AWS"],
+                          "A subscription management dashboard that helps users track, organize, and control all their recurring services in one place — with renewal reminders, spending insights, and one-click cancellation.",
+                        tech: ["Express", "Next.js", "TypeScript"],
                       },
                     ].map((project, index) => (
                       <div

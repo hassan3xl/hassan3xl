@@ -10,43 +10,43 @@ import Link from "next/link";
 const FeaturedProject = [
   {
     id: 1,
-    link: "https://flowstack-gamma.vercel.app/",
-    title: "FlowStack",
+    link: "https://ebuy.qstack.com.ng",
+    title: "eBuy",
     description:
-      "A project management and collaboration app design with django for the backend and next js and typescript for the frontend",
-    techStack: [
-      { id: 1, label: "Django", value: "django" },
-      { id: 2, label: "Next.js", value: "next-js" },
-      { id: 3, label: "TypeScript", value: "typescript" },
-      { id: 4, label: "Python", value: "python" },
-    ],
-    color: "from-zinc-700 to-zinc-400",
-  },
-  {
-    id: 2,
-    link: "https://flowstack-gamma.vercel.app/",
-    title: "SubsManager",
-    description:
-      "A subscription management platform with admin privileges, allowing users to subscribe to various services seamlessly.",
-    techStack: [
-      { id: 1, label: "Express", value: "express" },
-      { id: 2, label: "Next.js", value: "next-js" },
-      { id: 3, label: "TypeScript", value: "typescript" },
-    ],
-    color: "from-zinc-600 to-zinc-300",
-  },
-  {
-    id: 3,
-    link: "https://ebuy-frontend.vercel.app/",
-    title: "Ebuy Store",
-    description:
-      "An e-commerce microservice application designed with Django and Express for the backend, and Next.js for the frontend.",
+      "A multi-vendor e-commerce marketplace where independent sellers list, manage, and sell products to a shared customer base — featuring vendor dashboards, secure checkout, and real-time order tracking.",
     techStack: [
       { id: 1, label: "Django", value: "django" },
       { id: 2, label: "Next.js", value: "next-js" },
       { id: 3, label: "TypeScript", value: "typescript" },
       { id: 4, label: "Python", value: "python" },
       { id: 5, label: "Express", value: "express" },
+    ],
+    color: "from-zinc-700 to-zinc-400",
+  },
+  {
+    id: 2,
+    link: "https://workn.qstack.com.ng",
+    title: "WorkN",
+    description:
+      "A collaborative workspace platform for teams to manage projects, track tasks, and communicate in real time — designed to streamline remote and hybrid workflows.",
+    techStack: [
+      { id: 1, label: "Django", value: "django" },
+      { id: 2, label: "Next.js", value: "next-js" },
+      { id: 3, label: "TypeScript", value: "typescript" },
+      { id: 4, label: "Python", value: "python" },
+    ],
+    color: "from-zinc-600 to-zinc-300",
+  },
+  {
+    id: 3,
+    link: "#",
+    title: "SubSync",
+    description:
+      "A subscription management dashboard that helps users track, organize, and control all their recurring services in one place — with renewal reminders, spending insights, and one-click cancellation.",
+    techStack: [
+      { id: 1, label: "Express", value: "express" },
+      { id: 2, label: "Next.js", value: "next-js" },
+      { id: 3, label: "TypeScript", value: "typescript" },
     ],
     color: "from-zinc-800 to-zinc-500",
   },

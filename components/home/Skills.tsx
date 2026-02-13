@@ -34,7 +34,7 @@ export function Skills() {
             },
             { icon: "🛠️", title: "Tools", desc: "Git, Docker, AWS, CI/CD" },
           ].map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.1} direction="up">
+            <Reveal key={item.title} delay={i * 0.1}>
               <div className="text-center p-8 glass-card rounded-xl hover:bg-background/80 transition-all duration-300 hover:-translate-y-2">
                 <div className="text-5xl mb-6">{item.icon}</div>
                 <h3 className="font-bold text-lg text-primary mb-3">
