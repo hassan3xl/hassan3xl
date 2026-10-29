@@ -46,12 +46,11 @@ export function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-foreground/80 leading-relaxed text-sm sm:text-base">
           <div className="space-y-4">
             <p>
-              I am a software engineer and founder based in Abuja, Nigeria,
-              currently in my final year of Computer Science at{" "}
+              I am a software engineer and founder based in Abuja, Nigeria.
+              I graduated in Computer Science from{" "}
               <strong className="text-foreground">
                 Modibbo Adama University (MAU), Yola
-              </strong>{" "}
-              (graduating 2026).
+              </strong>.
             </p>
             <p>
               My journey began in 2022 with a deep fascination for how software
@@ -66,7 +65,7 @@ export function About() {
 
           <div className="space-y-4">
             <p>
-              For my final-year thesis, I am developing a{" "}
+              For my degree thesis, I designed a{" "}
               <strong className="text-foreground">
                 multi-tenant resource isolation framework
               </strong>

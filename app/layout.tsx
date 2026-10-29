@@ -7,7 +7,7 @@ import Footer from "@/components/footer/Footer";
 export const metadata: Metadata = {
   title: "Hassan Saidu — Systems & Full-Stack Engineer",
   description:
-    "Founder of Mercanest. Final-year CS student. Building backend-heavy web systems with Python/Django, Celery, and clean Next.js frontends.",
+    "Founder of Mercanest. Computer Science graduate based in Abuja, Nigeria. Building backend-heavy web systems with Python/Django, Celery, and clean Next.js frontends.",
   keywords: [
     "Hassan Saidu",
     "hassan3xl",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hassan Saidu — Systems & Full-Stack Engineer",
     description:
-      "Founder of Mercanest. Final-year CS student building high-reliability platforms with Python/Django, Celery, and modern React/Next.js.",
+      "Founder of Mercanest. Computer Science graduate based in Abuja, Nigeria building high-reliability platforms with Python/Django, Celery, and modern React/Next.js.",
     type: "website",
   },
 };

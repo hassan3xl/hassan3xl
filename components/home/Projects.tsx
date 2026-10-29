@@ -2,7 +2,16 @@
 
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
-import { ArrowUpRight, Github, ExternalLink, Cpu, Shield, ShoppingCart, Layers, Users } from "lucide-react";
+import {
+  ArrowUpRight,
+  Github,
+  ExternalLink,
+  Cpu,
+  Shield,
+  ShoppingCart,
+  Layers,
+  Users,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ProjectItem {
@@ -32,14 +41,22 @@ const FEATURED_PROJECTS: ProjectItem[] = [
       "Asynchronous background jobs with Celery & Redis",
       "High-throughput transactional billing and ledger records",
     ],
-    techStack: ["Python", "Django", "Celery", "PostgreSQL", "Redis", "Next.js", "Docker"],
-    liveUrl: "https://mercanest.com",
+    techStack: [
+      "Python",
+      "Django",
+      "Celery",
+      "PostgreSQL",
+      "Redis",
+      "Next.js",
+      "Docker",
+    ],
+    liveUrl: "https://mercanest.com.ng",
     githubUrl: "https://github.com/hassan3xl",
   },
   {
     id: "resource-isolation",
     title: "Multi-Tenant Resource Isolation Framework",
-    role: "Undergraduate Thesis",
+    role: "B.Sc. Research Thesis",
     category: "Research",
     icon: Shield,
     description:
@@ -49,25 +66,16 @@ const FEATURED_PROJECTS: ProjectItem[] = [
       "Resource contention prevention in shared database clusters",
       "Benchmark metrics evaluating tenant throughput under burst load",
     ],
-    techStack: ["Python", "Linux Architecture", "PostgreSQL", "Docker", "Security"],
-    githubUrl: "https://github.com/hassan3xl",
-  },
-  {
-    id: "powerwatch",
-    title: "PowerWatch Smart Energy System",
-    role: "Hardware & Firmware",
-    category: "Hardware",
-    icon: Cpu,
-    description:
-      "An ESP32-powered telemetry unit monitoring real-time voltage, current, and energy consumption with streaming alert feeds.",
-    highlights: [
-      "Firmware telemetry sampling with microsecond accuracy",
-      "Real-time event streaming over WebSockets",
-      "Low-power standby loops for remote solar installations",
+    techStack: [
+      "Python",
+      "Linux Architecture",
+      "PostgreSQL",
+      "Docker",
+      "Security",
     ],
-    techStack: ["ESP32", "C++", "MicroPython", "WebSockets", "Python"],
-    githubUrl: "https://github.com/hassan3xl",
+    githubUrl: "https://github.com/hassan3xl/fyp",
   },
+
   {
     id: "workn",
     title: "WorkN Collaborative Workspace",
@@ -85,8 +93,8 @@ const FEATURED_PROJECTS: ProjectItem[] = [
     githubUrl: "https://github.com/hassan3xl",
   },
   {
-    id: "ebuy",
-    title: "eBuy Marketplace",
+    id: "mercanest-shop",
+    title: "mercanest Marketplace",
     role: "Backend & Systems",
     category: "Web Systems",
     icon: Layers,
@@ -97,7 +105,7 @@ const FEATURED_PROJECTS: ProjectItem[] = [
       "Optimized query sets for complex product filtering and search",
     ],
     techStack: ["Django", "Next.js", "TypeScript", "PostgreSQL"],
-    liveUrl: "https://ebuy.qstack.com.ng",
+    liveUrl: "https://shop.mercanest.com.ng",
     githubUrl: "https://github.com/hassan3xl",
   },
 ];
@@ -105,10 +113,10 @@ const FEATURED_PROJECTS: ProjectItem[] = [
 export function Projects() {
   return (
     <Section id="projects" className="border-t border-border/60">
-      <div className="space-y-10">
+      <div className="space-y-8 sm:space-y-10">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-2">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
+          <div className="space-y-1.5 sm:space-y-2">
             <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
               Featured Work
             </p>
@@ -118,7 +126,7 @@ export function Projects() {
           </div>
           <Link
             href="/projects"
-            className="text-xs font-mono text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
+            className="text-xs font-mono text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors self-start sm:self-auto"
           >
             Browse all repositories
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -126,26 +134,26 @@ export function Projects() {
         </div>
 
         {/* Projects List */}
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6">
           {FEATURED_PROJECTS.map((project) => {
             const Icon = project.icon;
             return (
               <div
                 key={project.id}
-                className="group p-6 sm:p-7 rounded-2xl border border-border/70 bg-card/40 hover:bg-card/90 hover:border-zinc-700/60 dark:hover:border-zinc-700 transition-all duration-200 space-y-4"
+                className="group p-5 sm:p-6 md:p-7 rounded-2xl border border-border/70 bg-card/40 hover:bg-card/90 hover:border-zinc-700/60 dark:hover:border-zinc-700 transition-all duration-200 space-y-4"
               >
                 {/* Top row */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-foreground shrink-0">
+                  <div className="flex items-start sm:items-center gap-3 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-foreground shrink-0 mt-0.5 sm:mt-0">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
+                    <div className="min-w-0 space-y-0.5">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                        <h3 className="text-base sm:text-lg font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
                           {project.title}
                         </h3>
-                        <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-secondary text-muted-foreground border border-border/60">
+                        <span className="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-full bg-secondary text-muted-foreground border border-border/60 shrink-0">
                           {project.category}
                         </span>
                       </div>
@@ -156,7 +164,7 @@ export function Projects() {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-2 pt-1 sm:pt-0">
+                  <div className="flex items-center gap-2 pt-1 sm:pt-0 shrink-0">
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
@@ -184,7 +192,7 @@ export function Projects() {
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-foreground/80 leading-relaxed max-w-3xl">
+                <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed max-w-3xl">
                   {project.description}
                 </p>
 
@@ -193,7 +201,9 @@ export function Projects() {
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1 text-xs text-muted-foreground">
                     {project.highlights.map((h, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="text-muted-foreground/60 font-mono">›</span>
+                        <span className="text-muted-foreground/60 font-mono">
+                          ›
+                        </span>
                         <span>{h}</span>
                       </li>
                     ))}
@@ -217,11 +227,14 @@ export function Projects() {
         </div>
 
         {/* View all footer */}
-        <div className="text-center pt-4">
-          <Link href="/projects">
+        <div className="text-center pt-2 sm:pt-4">
+          <Link
+            href="/projects"
+            className="block sm:inline-block w-full sm:w-auto"
+          >
             <Button
               variant="outline"
-              className="rounded-xl font-medium px-6 h-11 border-border/80 hover:bg-secondary/80 cursor-pointer gap-2"
+              className="w-full sm:w-auto rounded-xl font-medium px-6 h-11 border-border/80 hover:bg-secondary/80 cursor-pointer gap-2 text-xs sm:text-sm"
             >
               View all 20+ projects & open source repos
               <ArrowUpRight className="w-4 h-4" />

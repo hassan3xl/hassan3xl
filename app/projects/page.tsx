@@ -47,7 +47,7 @@ const FALLBACK_FEATURED = [
     id: 102,
     name: "multi-tenant-isolation-framework",
     description:
-      "Undergraduate research thesis framework enforcing compute and storage isolation across multi-tenant web applications.",
+      "Research thesis framework enforcing compute and storage isolation across multi-tenant web applications.",
     stargazers_count: 3,
     forks_count: 0,
     watchers_count: 3,

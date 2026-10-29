@@ -44,18 +44,18 @@ export function ContactMe() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Direct Contact Cards (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="p-6 rounded-2xl border border-border/70 bg-card/40 space-y-5">
+            <div className="p-5 sm:p-6 rounded-2xl border border-border/70 bg-card/40 space-y-5">
               <h3 className="font-semibold text-sm text-foreground">
                 Direct Channels
               </h3>
 
               {/* Email item */}
               <div className="flex items-start justify-between gap-3 p-3 rounded-xl bg-secondary/50 border border-border/40">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 min-w-0">
                   <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-foreground shrink-0 mt-0.5">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-[11px] font-mono text-muted-foreground">
                       Email Address
                     </p>

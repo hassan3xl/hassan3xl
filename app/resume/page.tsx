@@ -73,9 +73,10 @@ export default function ResumePage() {
         <p className="text-sm text-foreground/80 leading-relaxed max-w-3xl">
           Systems-focused developer with 4+ years of programming experience,
           specializing in Python/Django backend architectures, Celery background
-          queues, and performant React/Next.js interfaces. Final-year Computer
-          Science student at Modibbo Adama University with practical experience
-          in multi-tenancy, database optimization, and IoT hardware.
+          queues, and performant React/Next.js interfaces. Computer Science
+          graduate from Modibbo Adama University with practical experience in
+          multi-tenancy, database optimization, and IoT hardware. Based in Abuja,
+          Nigeria.
         </p>
 
         {/* Quick Contact Line */}
@@ -238,16 +239,16 @@ export default function ResumePage() {
               Bachelor of Science (B.Sc.) in Computer Science
             </h3>
             <span className="text-xs font-mono text-muted-foreground">
-              2022 – Expected 2026
+              Graduated 2026
             </span>
           </div>
           <p className="text-xs font-mono text-muted-foreground">
-            Modibbo Adama University (MAU), Yola, Nigeria • Final Year
+            Modibbo Adama University (MAU), Yola, Nigeria
           </p>
           <div className="pt-1 space-y-1 text-xs sm:text-sm text-foreground/80">
             <p>
               <strong className="text-foreground font-medium">
-                Undergraduate Thesis:
+                Degree Thesis:
               </strong>{" "}
               <em>Multi-Tenant Resource Isolation Framework</em> — Designing
               compute, storage, and quota enforcement mechanisms across shared
@@ -335,7 +336,7 @@ export default function ResumePage() {
               title: "Multi-Tenant Resource Isolation Framework",
               stack: "Python · Linux cgroups · PostgreSQL · Docker",
               description:
-                "Undergraduate research thesis exploring deterministic quota allocation and isolation across shared server instances.",
+                "Research thesis exploring deterministic quota allocation and isolation across shared server instances.",
             },
             {
               title: "PowerWatch Smart Energy System",

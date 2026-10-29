@@ -80,7 +80,7 @@ export default function SendMessageForm({
   };
 
   return (
-    <div className="p-6 sm:p-8 rounded-2xl border border-border/70 bg-card/40 backdrop-blur-sm">
+    <div className="p-5 sm:p-8 rounded-2xl border border-border/70 bg-card/40 backdrop-blur-sm">
       <div className="mb-6 space-y-1">
         <h3 className="font-semibold text-lg text-foreground">
           Send a direct message
