@@ -6,14 +6,12 @@ import { ContactMe } from "@/components/contact/ContactMe";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
-      <main className="max-w-6xl mx-auto px-4 md:px-8">
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <ContactMe />
-      </main>
+    <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <Hero />
+      <About />
+      <Projects />
+      <Skills />
+      <ContactMe />
     </div>
   );
 }

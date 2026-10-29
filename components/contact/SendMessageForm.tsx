@@ -5,14 +5,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { Loader2, CheckCircle2, AlertCircle, Send } from "lucide-react";
 import { sendMessageEndpoint } from "@/services/apiService";
 
 interface ContactFormData {
@@ -27,11 +20,12 @@ interface SendMessageFormProps {
 }
 
 export default function SendMessageForm({
-  source = "quantum-stack",
+  source = "hassan3xl-portfolio",
 }: SendMessageFormProps) {
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     register,
@@ -42,158 +36,202 @@ export default function SendMessageForm({
 
   const onSubmit = async (data: ContactFormData) => {
     setStatus("loading");
+    setErrorMessage("");
+
     try {
       const payload = { ...data, source };
+      // Prefer the internal Next.js API route if backend url is unavailable, or try external first
+      const endpoint = sendMessageEndpoint || "/api/contact";
 
-      const res = await fetch(`${sendMessageEndpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      let res: Response;
+      try {
+        res = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+      } catch (networkErr) {
+        // If external endpoint failed (e.g. Render sleeping/CORS), fallback to local /api/contact
+        res = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+      }
 
       if (!res.ok) {
-        throw new Error("Failed to send message");
+        throw new Error("Unable to deliver message right now. Please email directly.");
       }
 
       setStatus("success");
       reset();
-
-      // Reset status after 5 seconds
-      setTimeout(() => setStatus("idle"), 5000);
-    } catch (error) {
-      console.error("Error sending message:", error);
+      setTimeout(() => setStatus("idle"), 6000);
+    } catch (err: any) {
+      console.error("Error submitting contact form:", err);
       setStatus("error");
+      setErrorMessage(
+        err?.message || "Failed to send message. Please send an email directly.",
+      );
     }
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Send me a message</CardTitle>
-        <CardDescription>
-          Fill out the form below and I&apos;ll get back to you shortly.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        {status === "success" ? (
-          <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-300">
-            <div className="h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
-              <CheckCircle2 className="h-6 w-6 text-green-600 dark:text-green-400" />
-            </div>
-            <h3 className="font-bold text-xl mb-2">Message Sent!</h3>
-            <p className="text-muted-foreground">
-              Thanks for reaching out. I&apos;ll get back to you soon.
-            </p>
-            <Button
-              variant="outline"
-              className="mt-6"
-              onClick={() => setStatus("idle")}
-            >
-              Send another message
-            </Button>
+    <div className="p-6 sm:p-8 rounded-2xl border border-border/70 bg-card/40 backdrop-blur-sm">
+      <div className="mb-6 space-y-1">
+        <h3 className="font-semibold text-lg text-foreground">
+          Send a direct message
+        </h3>
+        <p className="text-xs text-muted-foreground">
+          I typically respond within 24 hours.
+        </p>
+      </div>
+
+      {status === "success" ? (
+        <div className="py-8 flex flex-col items-center justify-center text-center space-y-3">
+          <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+            <CheckCircle2 className="w-6 h-6" />
           </div>
-        ) : (
-          <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
-            <div className="grid gap-2">
-              <label htmlFor="name" className="text-sm font-medium">
-                Name
+          <h4 className="font-semibold text-foreground text-base">
+            Message dispatched!
+          </h4>
+          <p className="text-xs text-muted-foreground max-w-xs">
+            Thank you for reaching out. I'll get back to your email shortly.
+          </p>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setStatus("idle")}
+            className="mt-2 text-xs rounded-xl"
+          >
+            Send another note
+          </Button>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label
+                htmlFor="name"
+                className="text-xs font-mono text-muted-foreground"
+              >
+                Your Name
               </label>
               <Input
                 id="name"
-                placeholder="John Doe"
+                placeholder="Jane Doe"
                 disabled={status === "loading"}
+                className="rounded-xl bg-secondary/40 border-border/70 focus-visible:ring-1 focus-visible:ring-foreground"
                 {...register("name", { required: "Name is required" })}
               />
               {errors.name && (
-                <span className="text-xs text-red-500 font-medium">
+                <p className="text-[11px] text-red-500 font-mono">
                   {errors.name.message}
-                </span>
+                </p>
               )}
             </div>
-            <div className="grid gap-2">
-              <label htmlFor="email" className="text-sm font-medium">
-                Email
+
+            <div className="space-y-1.5">
+              <label
+                htmlFor="email"
+                className="text-xs font-mono text-muted-foreground"
+              >
+                Your Email
               </label>
               <Input
                 id="email"
                 type="email"
-                placeholder="john@example.com"
+                placeholder="jane@example.com"
                 disabled={status === "loading"}
+                className="rounded-xl bg-secondary/40 border-border/70 focus-visible:ring-1 focus-visible:ring-foreground"
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address",
+                    message: "Invalid email",
                   },
                 })}
               />
               {errors.email && (
-                <span className="text-xs text-red-500 font-medium">
+                <p className="text-[11px] text-red-500 font-mono">
                   {errors.email.message}
-                </span>
+                </p>
               )}
             </div>
-            <div className="grid gap-2">
-              <label htmlFor="subject" className="text-sm font-medium">
-                Subject
-              </label>
-              <Input
-                id="subject"
-                placeholder="Project Inquiry"
-                disabled={status === "loading"}
-                {...register("subject", { required: "Subject is required" })}
-              />
-              {errors.subject && (
-                <span className="text-xs text-red-500 font-medium">
-                  {errors.subject.message}
-                </span>
-              )}
-            </div>
-            <div className="grid gap-2">
-              <label htmlFor="message" className="text-sm font-medium">
-                Message
-              </label>
-              <Textarea
-                id="message"
-                placeholder="Tell me about your project..."
-                disabled={status === "loading"}
-                {...register("message", {
-                  required: "Message is required",
-                })}
-              />
-              {errors.message && (
-                <span className="text-xs text-red-500 font-medium">
-                  {errors.message.message}
-                </span>
-              )}
-            </div>
+          </div>
 
-            {status === "error" && (
-              <div className="flex items-center gap-2 text-sm text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/10 p-3 rounded-md">
-                <AlertCircle className="h-4 w-4" />
-                <p>Something went wrong. Please try again.</p>
-              </div>
-            )}
-
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={status === "loading"}
+          <div className="space-y-1.5">
+            <label
+              htmlFor="subject"
+              className="text-xs font-mono text-muted-foreground"
             >
-              {status === "loading" ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                "Send Message"
-              )}
-            </Button>
-          </form>
-        )}
-      </CardContent>
-    </Card>
+              Subject / Topic
+            </label>
+            <Input
+              id="subject"
+              placeholder="e.g. Mercanest integration, Django contract, or full-time role"
+              disabled={status === "loading"}
+              className="rounded-xl bg-secondary/40 border-border/70 focus-visible:ring-1 focus-visible:ring-foreground"
+              {...register("subject", { required: "Subject is required" })}
+            />
+            {errors.subject && (
+              <p className="text-[11px] text-red-500 font-mono">
+                {errors.subject.message}
+              </p>
+            )}
+          </div>
+
+          <div className="space-y-1.5">
+            <label
+              htmlFor="message"
+              className="text-xs font-mono text-muted-foreground"
+            >
+              Message
+            </label>
+            <Textarea
+              id="message"
+              rows={4}
+              placeholder="Tell me about your product requirements, timeline, or idea..."
+              disabled={status === "loading"}
+              className="rounded-xl bg-secondary/40 border-border/70 focus-visible:ring-1 focus-visible:ring-foreground resize-none"
+              {...register("message", { required: "Message is required" })}
+            />
+            {errors.message && (
+              <p className="text-[11px] text-red-500 font-mono">
+                {errors.message.message}
+              </p>
+            )}
+          </div>
+
+          {status === "error" && (
+            <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 text-red-600 dark:text-red-400 text-xs font-mono">
+              <AlertCircle className="w-4 h-4 shrink-0" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          <Button
+            type="submit"
+            disabled={status === "loading"}
+            className="w-full rounded-xl h-11 font-medium gap-2 cursor-pointer shadow-xs"
+          >
+            {status === "loading" ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Sending...</span>
+              </>
+            ) : (
+              <>
+                <span>Send Message</span>
+                <Send className="w-3.5 h-3.5" />
+              </>
+            )}
+          </Button>
+        </form>
+      )}
+    </div>
   );
 }

@@ -1,101 +1,164 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/ui/Reveal";
-import { ArrowRight, Github, Linkedin, Mail, Download } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  Check,
+  Copy,
+  Terminal,
+  MapPin,
+  Sparkles,
+} from "lucide-react";
 
 export function Hero() {
+  const [copied, setCopied] = useState(false);
+  const email = "contact@hassansaidu.me";
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // fallback
+    }
+  };
+
   return (
-    <section className="min-h-[90vh] flex flex-col justify-center items-center text-center py-12 md:py-20 relative overflow-hidden">
-      {/* Dynamic Background - Subtle Dark */}
-
-      <div className="container px-4 md:px-6 relative z-10 flex flex-col items-center">
-        {/* Profile Image */}
-        <Reveal delay={0.1}>
-          <div className="relative mb-6 md:mb-8 group">
-            <div className="relative w-28 h-28 md:w-40 md:h-40 rounded-full p-[2px] bg-gradient-to-b from-zinc-700 to-transparent">
-              <div className="w-full h-full rounded-full overflow-hidden bg-zinc-950 relative">
-                <Image
-                  src="/hassane.png"
-                  fill
-                  alt="Hassan Saidu"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Main Heading */}
-        <Reveal delay={0.2}>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 md:mb-6 leading-[1.1]">
-            Building the <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500">
-              Digital Future
+    <section className="pt-6 pb-14 md:pt-10 md:pb-20">
+      <div className="flex flex-col gap-8 max-w-3xl">
+        {/* Top Status & Location Badges */}
+        <div className="flex flex-wrap items-center gap-2.5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-          </h1>
-        </Reveal>
-
-        {/* Subheading */}
-        <Reveal delay={0.3}>
-          <p className="max-w-xl md:max-w-2xl text-base md:text-xl text-muted-foreground mb-8 md:mb-10 leading-relaxed mx-auto px-2">
-            I'm{" "}
-            <span className="font-semibold text-foreground">Hassan Saidu</span>,
-            a Full Stack Developer transforming ideas into exceptional digital
-            experiences. Specialized in Next.js, React, and Modern UI.
-          </p>
-        </Reveal>
-
-        {/* Social Links */}
-        <Reveal delay={0.5}>
-          <div className="flex gap-4 md:gap-6 justify-center items-center">
-            {[
-              {
-                href: "https://github.com/hassan3xl",
-                icon: Github,
-                label: "GitHub",
-              },
-              {
-                href: "https://linkedin.com/in/hassan3xl",
-                icon: Linkedin,
-                label: "LinkedIn",
-              },
-              {
-                href: "mailto:contact@hassan3xl.com",
-                icon: Mail,
-                label: "Email",
-              },
-            ].map((social, idx) => (
-              <a
-                key={idx}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.label}
-                className="p-3 rounded-full hover:bg-white/5 border border-transparent hover:border-white/10 text-muted-foreground hover:text-foreground transition-all duration-300"
-              >
-                <social.icon className="w-5 h-5 md:w-6 md:h-6" />
-              </a>
-            ))}
+            Available for roles & projects
           </div>
-        </Reveal>
-      </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ delay: 2, duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
-      >
-        <div className="w-5 h-9 md:w-6 md:h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center p-2">
-          <div className="w-1 h-3 bg-muted-foreground/50 rounded-full" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-muted-foreground bg-secondary/60 border border-border/60">
+            <MapPin className="w-3 h-3" />
+            Abuja, Nigeria (Remote)
+          </div>
         </div>
-      </motion.div>
+
+        {/* Profile Header & Main Heading */}
+        <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+              Hassan Saidu
+            </h1>
+            <p className="text-lg sm:text-xl text-muted-foreground font-medium">
+              Full-Stack Developer, Founder & CS Researcher
+            </p>
+          </div>
+
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden ring-1 ring-border/80 shadow-md bg-secondary shrink-0">
+            <Image
+              src="/hassane.png"
+              alt="Hassan Saidu"
+              fill
+              sizes="(max-width: 640px) 80px, 96px"
+              priority
+              className="object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Narrative Pitch */}
+        <p className="text-base sm:text-lg text-foreground/80 leading-relaxed font-normal">
+          I build backend-heavy, high-reliability web systems with{" "}
+          <strong className="text-foreground font-semibold">
+            Python/Django
+          </strong>
+          , <strong className="text-foreground font-semibold">Celery</strong>,
+          and{" "}
+          <strong className="text-foreground font-semibold">PostgreSQL</strong>,
+          and ship clean, fast{" "}
+          <strong className="text-foreground font-semibold">
+            React/Next.js
+          </strong>{" "}
+          frontends on top. Founder of{" "}
+          <a
+            href="#projects"
+            className="text-foreground font-semibold underline decoration-border hover:decoration-foreground underline-offset-4 transition-colors"
+          >
+            Mercanest
+          </a>{" "}
+          and final-year Computer Science student researching multi-tenant
+          resource isolation.
+        </p>
+
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center gap-3 pt-1">
+          <Link href="/projects">
+            <Button className="rounded-xl font-medium px-5 h-11 gap-2 cursor-pointer shadow-xs">
+              View Work
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
+
+          <Link href="/resume">
+            <Button
+              variant="outline"
+              className="rounded-xl font-medium px-5 h-11 border-border/80 hover:bg-secondary/60 cursor-pointer"
+            >
+              Resume & Experience
+            </Button>
+          </Link>
+
+          {/* Copy Email Button */}
+          <button
+            onClick={handleCopyEmail}
+            className="inline-flex items-center gap-2 h-11 px-4 rounded-xl border border-border/80 bg-secondary/40 hover:bg-secondary/80 text-xs font-mono text-muted-foreground hover:text-foreground transition-all cursor-pointer"
+            title="Click to copy email address"
+          >
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-emerald-500" />
+                <span className="text-emerald-500 font-medium">
+                  Copied to clipboard
+                </span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-3.5 h-3.5" />
+                <span>{email}</span>
+              </>
+            )}
+          </button>
+        </div>
+
+        {/* Social / Direct Connect Bar */}
+        <div className="pt-2 flex items-center gap-4 text-xs text-muted-foreground font-mono">
+          <a
+            href="https://github.com/hassan3xl"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-foreground flex items-center gap-1.5 transition-colors"
+          >
+            <Github className="w-3.5 h-3.5" />
+            github.com/hassan3xl
+          </a>
+          <span className="text-border">•</span>
+          <a
+            href="https://www.linkedin.com/in/hassan-saidu-318a2a229"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-foreground flex items-center gap-1.5 transition-colors"
+          >
+            <Linkedin className="w-3.5 h-3.5" />
+            www.linkedin.com/in/hassan-saidu-318a2a229
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,53 +1,133 @@
 "use client";
 
-import { Reveal } from "@/components/ui/Reveal";
-import { GradientText } from "@/components/ui/GradientText";
+import { Section } from "@/components/ui/Section";
+import { Terminal, Database, Code2, Cpu } from "lucide-react";
+
+interface SkillCategory {
+  title: string;
+  icon: typeof Terminal;
+  description: string;
+  skills: string[];
+}
+
+const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    title: "Backend & Distributed Systems",
+    icon: Database,
+    description:
+      "Designing resilient services, queue-based background workers, and relational schemas.",
+    skills: [
+      "Python",
+      "Django",
+      "Django REST Framework",
+      "Celery",
+      "PostgreSQL",
+      "Redis",
+      "FastAPI",
+      "JWT Authentication",
+      "RESTful API Design",
+    ],
+  },
+  {
+    title: "Frontend & UI Engineering",
+    icon: Code2,
+    description:
+      "Building clean, accessible interfaces with zero layout shift and fast interactions.",
+    skills: [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Next.js (App Router)",
+      "Tailwind CSS",
+      "HTML5 / CSS3",
+      "UI Component Architecture",
+    ],
+  },
+  {
+    title: "Infrastructure & DevOps",
+    icon: Terminal,
+    description:
+      "Containerizing services, configuring reverse proxies, and maintaining production environments.",
+    skills: [
+      "Docker",
+      "Linux / Bash",
+      "Nginx",
+      "Render",
+      "Git & GitHub",
+      "CI / CD Pipelines",
+      "Multi-tenancy Isolation",
+    ],
+  },
+  {
+    title: "Embedded & IoT Prototyping",
+    icon: Cpu,
+    description:
+      "Hardware telemetry, microcontroller programming, and real-time streaming protocols.",
+    skills: [
+      "ESP32",
+      "C / C++",
+      "MicroPython",
+      "WebSockets",
+      "Sensor Telemetry",
+      "IoT Automation",
+    ],
+  },
+];
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 relative overflow-x-clip">
-      <div className="absolute inset-0 bg-primary/5 -skew-y-3 -z-10 transform origin-left" />
-
-      <div className="max-w-6xl mx-auto px-4">
-        <Reveal width="100%">
-          <h2 className="text-4xl font-bold mb-16 text-center">
-            Skills & <GradientText>Technologies</GradientText>
+    <Section id="skills" className="border-t border-border/60">
+      <div className="space-y-10">
+        <div className="space-y-2">
+          <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            Technical Stack
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            Tools, technologies & engineering domains
           </h2>
-        </Reveal>
+          <p className="text-sm text-muted-foreground max-w-2xl">
+            My primary stack is built around Python and TypeScript, with a strong
+            focus on reliability, scalable data flows, and maintainable architectures.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-4 gap-6">
-          {[
-            {
-              icon: "⚛️",
-              title: "Frontend",
-              desc: "React, Next.js, Vue, Tailwind CSS",
-            },
-            {
-              icon: "🔧",
-              title: "Backend",
-              desc: "Node.js, Express, Python, REST APIs",
-            },
-            {
-              icon: "💾",
-              title: "Database",
-              desc: "MongoDB, PostgreSQL, MySQL, Redis",
-            },
-            { icon: "🛠️", title: "Tools", desc: "Git, Docker, AWS, CI/CD" },
-          ].map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.1}>
-              <div className="text-center p-8 glass-card rounded-xl hover:bg-background/80 transition-all duration-300 hover:-translate-y-2">
-                <div className="text-5xl mb-6">{item.icon}</div>
-                <h3 className="font-bold text-lg text-primary mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {item.desc}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {SKILL_CATEGORIES.map((cat) => {
+            const Icon = cat.icon;
+            return (
+              <div
+                key={cat.title}
+                className="p-6 rounded-2xl border border-border/70 bg-card/40 hover:bg-card/70 transition-colors space-y-4"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-foreground shrink-0 mt-0.5">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-base text-foreground">
+                      {cat.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                      {cat.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/50">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2.5 py-1 rounded-md text-xs font-mono bg-secondary/60 text-foreground/80 border border-border/40 hover:text-foreground transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </Reveal>
-          ))}
+            );
+          })}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -1,424 +1,374 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
 import {
   Download,
-  ExternalLink,
-  FileText,
+  Printer,
   Mail,
   Github,
   Linkedin,
-  Phone,
-  ArrowRight,
-  BookOpen,
-  Briefcase,
-  Code,
-  Award,
   MapPin,
+  ExternalLink,
+  Briefcase,
+  GraduationCap,
+  Code2,
+  FolderGit2,
+  ArrowLeft,
 } from "lucide-react";
-import Link from "next/link";
-import { Section } from "@/components/ui/Section";
-import { Reveal } from "@/components/ui/Reveal";
-import { GradientText } from "@/components/ui/GradientText";
 import { Button } from "@/components/ui/button";
 
-const ResumePage = () => {
-  const [activeSection, setActiveSection] = useState("all");
-
-  const resumeSections = [
-    { id: "all", label: "All" },
-    { id: "experience", label: "Experience", icon: <Briefcase size={16} /> },
-    { id: "education", label: "Education", icon: <BookOpen size={16} /> },
-    { id: "skills", label: "Skills", icon: <Code size={16} /> },
-    { id: "projects", label: "Projects", icon: <Award size={16} /> },
-  ];
-
-  const skills = [
-    { name: "Python", level: 90 },
-    { name: "JavaScript", level: 85 },
-    { name: "Django", level: 90 },
-    { name: "React", level: 80 },
-    { name: "Next.js", level: 75 },
-    { name: "Remix", level: 70 },
-    { name: "Express", level: 75 },
-    { name: "Flask", level: 85 },
-    { name: "Tailwind CSS", level: 85 },
-    { name: "Git", level: 80 },
-  ];
-
-  const shouldShowSection = (sectionId: string) => {
-    return activeSection === "all" || activeSection === sectionId;
+export default function ResumePage() {
+  const handlePrint = () => {
+    if (typeof window !== "undefined") {
+      window.print();
+    }
   };
 
   return (
-    <div className="min-h-screen">
-      <Section className="pt-8 md:pt-16">
-        {/* Page Header */}
-        <Reveal>
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6">
-            <div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Professional <GradientText>Resume</GradientText>
-              </h1>
-              <div className="w-24 h-1 bg-gradient-to-r from-white to-zinc-500 rounded-full mb-6" />
-              <p className="text-muted-foreground max-w-2xl text-lg">
-                My qualifications, experience, and skills in software
-                development.
-              </p>
-            </div>
-            <div className="flex flex-row gap-3">
-              <a
-                href="/hassan3xl-resume.pdf"
-                download="Hassan_Saidu_Resume.pdf"
-                className="flex items-center gap-2 px-6 py-3 glass-card rounded-xl hover:border-primary/50 transition-all font-medium"
-              >
-                <Download size={18} />
-                <span className="hidden sm:inline">Download PDF</span>
-              </a>
-              <button
-                onClick={() => window.print()}
-                className="flex items-center gap-2 px-6 py-3 glass-card rounded-xl hover:border-primary/50 transition-all font-medium"
-              >
-                <FileText size={18} />
-                <span className="hidden sm:inline">Print</span>
-              </button>
-            </div>
-          </div>
-        </Reveal>
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-12">
+      {/* Top Navigation & Actions */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-border/60">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          Back to overview
+        </Link>
 
-        {/* Resume Filter Tabs */}
-        <Reveal delay={0.1}>
-          <div className="mb-12 overflow-x-auto">
-            <div className="inline-flex glass-card rounded-xl p-1.5 min-w-full md:min-w-0">
-              {resumeSections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all font-medium ${
-                    activeSection === section.id
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
-                  }`}
-                >
-                  {section.icon}
-                  {section.label}
-                </button>
-              ))}
+        <div className="flex items-center gap-2">
+          <a
+            href="/hassan3xl-resume.pdf"
+            download="Hassan_Saidu_Resume.pdf"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium bg-foreground text-background hover:opacity-90 transition-opacity shadow-xs"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>Download PDF</span>
+          </a>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handlePrint}
+            className="text-xs h-8 rounded-lg gap-1.5 border-border/70"
+          >
+            <Printer className="w-3.5 h-3.5" />
+            <span>Print</span>
+          </Button>
+        </div>
+      </div>
+
+      {/* Resume Document Header */}
+      <div className="space-y-4">
+        <div>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            Hassan Saidu
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground font-medium mt-1">
+            Full-Stack & Systems Engineer • Founder of Mercanest
+          </p>
+        </div>
+
+        <p className="text-sm text-foreground/80 leading-relaxed max-w-3xl">
+          Systems-focused developer with 4+ years of programming experience,
+          specializing in Python/Django backend architectures, Celery background
+          queues, and performant React/Next.js interfaces. Final-year Computer
+          Science student at Modibbo Adama University with practical experience
+          in multi-tenancy, database optimization, and IoT hardware.
+        </p>
+
+        {/* Quick Contact Line */}
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-mono text-muted-foreground pt-1">
+          <a
+            href="mailto:contact@hassansaidu.me"
+            className="hover:text-foreground flex items-center gap-1.5 transition-colors"
+          >
+            <Mail className="w-3.5 h-3.5" />
+            contact@hassansaidu.me
+          </a>
+          <a
+            href="https://github.com/hassan3xl"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-foreground flex items-center gap-1.5 transition-colors"
+          >
+            <Github className="w-3.5 h-3.5" />
+            github.com/hassan3xl
+          </a>
+          <a
+            href="https://www.linkedin.com/in/hassan-saidu-318a2a229"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-foreground flex items-center gap-1.5 transition-colors"
+          >
+            <Linkedin className="w-3.5 h-3.5" />
+            www.linkedin.com/in/hassan-saidu-318a2a229
+          </a>
+          <span className="flex items-center gap-1.5">
+            <MapPin className="w-3.5 h-3.5" />
+            Abuja, Nigeria (Remote)
+          </span>
+        </div>
+      </div>
+
+      {/* Experience Section */}
+      <section className="space-y-6 pt-4 border-t border-border/60">
+        <div className="flex items-center gap-2 text-foreground">
+          <Briefcase className="w-4 h-4 text-muted-foreground" />
+          <h2 className="text-lg font-bold tracking-tight uppercase text-xs font-mono text-muted-foreground">
+            Experience & Ventures
+          </h2>
+        </div>
+
+        <div className="space-y-8">
+          {/* Mercanest */}
+          <div className="space-y-2">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <h3 className="font-semibold text-base text-foreground">
+                Founder & Lead Engineer —{" "}
+                <span className="font-normal text-muted-foreground">
+                  Mercanest
+                </span>
+              </h3>
+              <span className="text-xs font-mono text-muted-foreground">
+                Jan 2024 – Present
+              </span>
             </div>
-          </div>
-        </Reveal>
-
-        {/* Resume Content */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Left Column - Contact & Skills */}
-          <div className="md:col-span-1 space-y-8">
-            {/* Contact Information */}
-            <Reveal delay={0.2}>
-              <div className="glass-card rounded-3xl p-6 border-white/5">
-                <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                  <Mail size={18} className="text-primary" />
-                  Contact
-                </h2>
-                <ul className="space-y-5">
-                  <li className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                      <Mail size={16} />
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground text-sm">Email</p>
-                      <a
-                        href="mailto:saiduhassanhussaine@gmail.com"
-                        className="text-foreground hover:text-primary transition-colors text-sm"
-                      >
-                        saiduhassanhussaine@gmail.com
-                      </a>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-zinc-500/10 text-zinc-400">
-                      <Github size={16} />
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground text-sm">GitHub</p>
-                      <a
-                        href="https://github.com/hassan3xl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground hover:text-primary transition-colors text-sm"
-                      >
-                        github.com/hassan3xl
-                      </a>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-zinc-600/10 text-zinc-300">
-                      <Linkedin size={16} />
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground text-sm">LinkedIn</p>
-                      <a
-                        href="https://linkedin.com/in/hassan3xl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-foreground hover:text-primary transition-colors text-sm"
-                      >
-                        linkedin.com/in/hassan3xl
-                      </a>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-zinc-500/10 text-zinc-400">
-                      <Phone size={16} />
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground text-sm">Phone</p>
-                      <a
-                        href="tel:+2349160807885"
-                        className="text-foreground hover:text-primary transition-colors text-sm"
-                      >
-                        +234 916 080 7885
-                      </a>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="p-2 rounded-lg bg-zinc-600/10 text-zinc-300">
-                      <MapPin size={16} />
-                    </div>
-                    <div>
-                      <p className="text-muted-foreground text-sm">Location</p>
-                      <span className="text-foreground text-sm">
-                        Nigeria (Remote Available)
-                      </span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
-
-            {/* Skills Section */}
-            {shouldShowSection("skills") && (
-              <Reveal delay={0.3}>
-                <div className="glass-card rounded-3xl p-6 border-white/5">
-                  <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                    <Code size={18} className="text-primary" />
-                    Technical Skills
-                  </h2>
-                  <ul className="space-y-4">
-                    {skills.map((skill) => (
-                      <li key={skill.name}>
-                        <div className="flex justify-between mb-2">
-                          <span className="font-medium text-sm">
-                            {skill.name}
-                          </span>
-                          <span className="text-muted-foreground text-sm">
-                            {skill.level}%
-                          </span>
-                        </div>
-                        <div className="w-full bg-zinc-800 rounded-full h-2">
-                          <div
-                            className="bg-gradient-to-r from-white to-zinc-500 h-2 rounded-full transition-all duration-500"
-                            style={{ width: `${skill.level}%` }}
-                          />
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            )}
+            <p className="text-xs font-mono text-muted-foreground">
+              CAC-Registered IT Business • Abuja, Nigeria
+            </p>
+            <ul className="list-disc list-outside pl-4 space-y-1.5 text-xs sm:text-sm text-foreground/80 leading-relaxed pt-1">
+              <li>
+                Architected and deployed a multi-tenant inventory and storefront
+                management engine serving retail and multi-merchant businesses.
+              </li>
+              <li>
+                Engineered asynchronous transaction processing, stock alerts,
+                and email dispatch using Celery with Redis as the message
+                broker.
+              </li>
+              <li>
+                Designed normalized PostgreSQL schemas with compound indexes to
+                ensure sub-50ms query latency on high-frequency catalog
+                searches.
+              </li>
+              <li>
+                Created modern, responsive web management consoles using Next.js
+                (App Router), TypeScript, and Tailwind CSS.
+              </li>
+            </ul>
           </div>
 
-          {/* Right Column - Experience, Education & Projects */}
-          <div className="md:col-span-2 space-y-8">
-            {/* Experience Section */}
-            {shouldShowSection("experience") && (
-              <Reveal delay={0.2}>
-                <div className="glass-card rounded-3xl p-6 md:p-8 border-white/5">
-                  <h2 className="text-xl font-bold mb-8 flex items-center gap-2">
-                    <Briefcase size={18} className="text-primary" />
-                    Professional Experience
-                  </h2>
-                  <div className="space-y-8">
-                    <div className="relative pl-8 border-l-2 border-zinc-700">
-                      <div className="absolute -left-2 top-0 h-4 w-4 rounded-full bg-primary" />
-                      <h3 className="text-lg font-bold mb-1">
-                        Freelance Developer
-                      </h3>
-                      <p className="text-muted-foreground text-sm mb-3">
-                        2023 - Present
-                      </p>
-                      <p className="text-muted-foreground mb-4">
-                        Developed custom web applications for clients using
-                        Django and React, ensuring performance, scalability, and
-                        user satisfaction.
-                      </p>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          Implemented RESTful APIs with Django Rest Framework
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          Created responsive UI components with React and
-                          Tailwind CSS
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          Optimized application performance and security
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          Managed client relationships and project delivery
-                        </li>
-                      </ul>
-                    </div>
+          {/* Freelance */}
+          <div className="space-y-2">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <h3 className="font-semibold text-base text-foreground">
+                Freelance Full-Stack & Systems Developer —{" "}
+                <span className="font-normal text-muted-foreground">
+                  Self-employed
+                </span>
+              </h3>
+              <span className="text-xs font-mono text-muted-foreground">
+                2023 – Present
+              </span>
+            </div>
+            <ul className="list-disc list-outside pl-4 space-y-1.5 text-xs sm:text-sm text-foreground/80 leading-relaxed pt-1">
+              <li>
+                Engineered custom RESTful backends using Django REST Framework
+                and FastAPI with role-based JWT authentication and rate
+                limiting.
+              </li>
+              <li>
+                Shipped collaborative web tools (WorkN, eBuy) with real-time
+                state updates, vendor management flows, and responsive UI.
+              </li>
+              <li>
+                Configured Docker containers, Nginx reverse proxies, and
+                automated deployments on Linux cloud servers (Render,
+                DigitalOcean).
+              </li>
+            </ul>
+          </div>
 
-                    <div className="relative pl-8 border-l-2 border-zinc-700">
-                      <div className="absolute -left-2 top-0 h-4 w-4 rounded-full bg-zinc-500" />
-                      <h3 className="text-lg font-bold mb-1">
-                        Intern - Software Development
-                      </h3>
-                      <p className="text-muted-foreground text-sm mb-3">
-                        Summer 2024
-                      </p>
-                      <p className="text-muted-foreground mb-4">
-                        Worked on building and optimizing APIs with Django Rest
-                        Framework and integrated them with React frontends.
-                      </p>
-                      <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          Developed API endpoints for data retrieval and
-                          manipulation
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          Implemented JWT authentication for secure access
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span>
-                          Created reusable React components for the frontend
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            )}
-
-            {/* Education Section */}
-            {shouldShowSection("education") && (
-              <Reveal delay={0.3}>
-                <div className="glass-card rounded-3xl p-6 md:p-8 border-white/5">
-                  <h2 className="text-xl font-bold mb-8 flex items-center gap-2">
-                    <BookOpen size={18} className="text-primary" />
-                    Education
-                  </h2>
-                  <div className="relative pl-8 border-l-2 border-zinc-700">
-                    <div className="absolute -left-2 top-0 h-4 w-4 rounded-full bg-primary" />
-                    <h3 className="text-lg font-bold mb-1">
-                      Bachelor's Degree in Computer Science
-                    </h3>
-                    <p className="text-foreground mb-1">
-                      Modibbo Adam University, Yola
-                    </p>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      2022 - Present
-                    </p>
-                    <p className="text-muted-foreground mb-4">
-                      Focusing on software engineering principles, algorithms,
-                      and modern web development technologies.
-                    </p>
-                    <div>
-                      <span className="text-sm font-medium">
-                        Relevant Coursework:
-                      </span>
-                      <p className="text-muted-foreground text-sm mt-1">
-                        Data Structures, Algorithms, Database Systems, Web
-                        Development, Operating Systems
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            )}
-
-            {/* Projects Section */}
-            {shouldShowSection("projects") && (
-              <Reveal delay={0.4}>
-                <div className="glass-card rounded-3xl p-6 md:p-8 border-white/5">
-                  <h2 className="text-xl font-bold mb-8 flex items-center gap-2">
-                    <Award size={18} className="text-primary" />
-                    Notable Projects
-                  </h2>
-                  <div className="space-y-6">
-                    {[
-                      {
-                        title: "eBuy",
-                        description:
-                          "A multi-vendor e-commerce marketplace where independent sellers list, manage, and sell products to a shared customer base — featuring vendor dashboards, secure checkout, and real-time order tracking.",
-                        tech: [
-                          "Python",
-                          "Django",
-                          "Next.js",
-                          "Express",
-                          "TypeScript",
-                        ],
-                      },
-                      {
-                        title: "WorkN",
-                        description:
-                          "A collaborative workspace platform for teams to manage projects, track tasks, and communicate in real time — designed to streamline remote and hybrid workflows.",
-                        tech: ["Python", "Django", "Next.js", "TypeScript"],
-                      },
-                      {
-                        title: "SubSync",
-                        description:
-                          "A subscription management dashboard that helps users track, organize, and control all their recurring services in one place — with renewal reminders, spending insights, and one-click cancellation.",
-                        tech: ["Express", "Next.js", "TypeScript"],
-                      },
-                    ].map((project, index) => (
-                      <div
-                        key={project.title}
-                        className="group p-4 rounded-2xl bg-zinc-900/30 hover:bg-zinc-900/50 transition-colors"
-                      >
-                        <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
-                          {project.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm mb-3">
-                          {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {project.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="text-xs px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 flex justify-center">
-                    <Link
-                      href="/projects"
-                      className="inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full hover:border-primary/50 transition-all font-medium"
-                    >
-                      View All Projects
-                      <ExternalLink size={16} />
-                    </Link>
-                  </div>
-                </div>
-              </Reveal>
-            )}
+          {/* Internship */}
+          <div className="space-y-2">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <h3 className="font-semibold text-base text-foreground">
+                Software Development Intern —{" "}
+                <span className="font-normal text-muted-foreground">
+                  Engineering Team
+                </span>
+              </h3>
+              <span className="text-xs font-mono text-muted-foreground">
+                Summer 2024
+              </span>
+            </div>
+            <ul className="list-disc list-outside pl-4 space-y-1.5 text-xs sm:text-sm text-foreground/80 leading-relaxed pt-1">
+              <li>
+                Collaborated on backend API development with Django REST
+                Framework, optimizing database ORM lookups and serialization
+                overhead.
+              </li>
+              <li>
+                Implemented comprehensive unit tests and automated test suites
+                improving overall code coverage and regression prevention.
+              </li>
+              <li>
+                Created reusable React UI components integrated with REST
+                endpoints.
+              </li>
+            </ul>
           </div>
         </div>
-      </Section>
+      </section>
+
+      {/* Education */}
+      <section className="space-y-6 pt-4 border-t border-border/60">
+        <div className="flex items-center gap-2 text-foreground">
+          <GraduationCap className="w-4 h-4 text-muted-foreground" />
+          <h2 className="text-lg font-bold tracking-tight uppercase text-xs font-mono text-muted-foreground">
+            Education
+          </h2>
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <h3 className="font-semibold text-base text-foreground">
+              Bachelor of Science (B.Sc.) in Computer Science
+            </h3>
+            <span className="text-xs font-mono text-muted-foreground">
+              2022 – Expected 2026
+            </span>
+          </div>
+          <p className="text-xs font-mono text-muted-foreground">
+            Modibbo Adama University (MAU), Yola, Nigeria • Final Year
+          </p>
+          <div className="pt-1 space-y-1 text-xs sm:text-sm text-foreground/80">
+            <p>
+              <strong className="text-foreground font-medium">
+                Undergraduate Thesis:
+              </strong>{" "}
+              <em>Multi-Tenant Resource Isolation Framework</em> — Designing
+              compute, storage, and quota enforcement mechanisms across shared
+              multi-tenant environments.
+            </p>
+            <p className="text-muted-foreground text-xs">
+              Relevant Coursework: Distributed Systems, Database Management
+              Systems, Operating Systems, Data Structures & Algorithms, Network
+              Security.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Competencies Matrix */}
+      <section className="space-y-6 pt-4 border-t border-border/60">
+        <div className="flex items-center gap-2 text-foreground">
+          <Code2 className="w-4 h-4 text-muted-foreground" />
+          <h2 className="text-lg font-bold tracking-tight uppercase text-xs font-mono text-muted-foreground">
+            Technical Competencies
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div className="p-4 rounded-xl border border-border/70 bg-card/40 space-y-1.5">
+            <p className="font-semibold text-foreground text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              Backend & Architecture
+            </p>
+            <p className="text-foreground/80 leading-relaxed">
+              Python, Django, Django REST Framework, Celery, FastAPI,
+              PostgreSQL, Redis, RESTful APIs, JWT Authentication, Microservices
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl border border-border/70 bg-card/40 space-y-1.5">
+            <p className="font-semibold text-foreground text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              Frontend & Web
+            </p>
+            <p className="text-foreground/80 leading-relaxed">
+              TypeScript, JavaScript (ES6+), React, Next.js (App Router),
+              Tailwind CSS, HTML5/CSS3, Responsive UI, State Management
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl border border-border/70 bg-card/40 space-y-1.5">
+            <p className="font-semibold text-foreground text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              DevOps & Infrastructure
+            </p>
+            <p className="text-foreground/80 leading-relaxed">
+              Docker, Linux / Bash Scripting, Nginx Reverse Proxy, Git & GitHub,
+              Render, CI/CD Workflows, Multi-tenant Isolation
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl border border-border/70 bg-card/40 space-y-1.5">
+            <p className="font-semibold text-foreground text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              Hardware & Embedded
+            </p>
+            <p className="text-foreground/80 leading-relaxed">
+              ESP32 Microcontrollers, C / C++, MicroPython, Sensor Telemetry,
+              WebSockets, Drone Avionics Exploration
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects Highlight */}
+      <section className="space-y-6 pt-4 border-t border-border/60">
+        <div className="flex items-center gap-2 text-foreground">
+          <FolderGit2 className="w-4 h-4 text-muted-foreground" />
+          <h2 className="text-lg font-bold tracking-tight uppercase text-xs font-mono text-muted-foreground">
+            Key Projects & Systems
+          </h2>
+        </div>
+
+        <div className="space-y-4">
+          {[
+            {
+              title: "Mercanest Platform",
+              stack: "Python · Django · Celery · PostgreSQL · Redis · Next.js",
+              description:
+                "CAC-registered multi-merchant store and inventory platform with asynchronous order fulfillment and ledger accounting.",
+            },
+            {
+              title: "Multi-Tenant Resource Isolation Framework",
+              stack: "Python · Linux cgroups · PostgreSQL · Docker",
+              description:
+                "Undergraduate research thesis exploring deterministic quota allocation and isolation across shared server instances.",
+            },
+            {
+              title: "PowerWatch Smart Energy System",
+              stack: "ESP32 · C++ · MicroPython · WebSockets · Python",
+              description:
+                "IoT telemetry hardware prototype providing real-time electrical parameter sampling and anomaly alerts.",
+            },
+            {
+              title: "WorkN Collaborative Platform",
+              stack: "Django · DRF · Next.js · TypeScript · Redis",
+              description:
+                "Real-time team workspace with synchronous task updates, board organization, and granular permissions.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="p-4 rounded-xl border border-border/60 bg-card/30 space-y-1"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <h3 className="font-semibold text-sm text-foreground">
+                  {item.title}
+                </h3>
+                <span className="text-[11px] font-mono text-muted-foreground">
+                  {item.stack}
+                </span>
+              </div>
+              <p className="text-xs text-foreground/80 leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
-};
-
-export default ResumePage;
+}

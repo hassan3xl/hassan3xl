@@ -4,7 +4,6 @@ interface GradientTextProps {
   children: React.ReactNode;
   className?: string;
   from?: string;
-  via?: string;
   to?: string;
   animate?: boolean;
 }
@@ -12,19 +11,15 @@ interface GradientTextProps {
 export const GradientText = ({
   children,
   className,
-  from = "from-white",
-  via = "via-zinc-400",
-  to = "to-zinc-600",
-  animate = false,
+  from = "from-foreground",
+  to = "to-muted-foreground",
 }: GradientTextProps) => {
   return (
     <span
       className={cn(
-        "bg-clip-text text-transparent bg-gradient-to-r font-bold tracking-tight pb-1",
+        "bg-clip-text text-transparent bg-gradient-to-r inline-block font-semibold tracking-tight",
         from,
-        via,
         to,
-        animate && "animate-gradient-x bg-[length:200%_auto]",
         className,
       )}
     >

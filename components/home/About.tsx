@@ -1,110 +1,107 @@
 "use client";
 
-import { Reveal } from "@/components/ui/Reveal";
-import { GradientText } from "@/components/ui/GradientText";
 import { Section } from "@/components/ui/Section";
-import { Code2, Palette, Terminal, Cpu } from "lucide-react";
+import {
+  Server,
+  Layout,
+  Cpu,
+  ShieldCheck,
+  GraduationCap,
+  Building2,
+} from "lucide-react";
 
 export function About() {
-  const skills = ["React", "Next.js", "TypeScript", "Tailwind CSS", "Python"];
+  const engineeringPillars = [
+    {
+      icon: Server,
+      title: "Backend & Distributed Systems",
+      desc: "Robust API design with Django & DRF, asynchronous task orchestration using Celery & Redis, relational modeling in PostgreSQL, and containerized deployment with Docker.",
+    },
+    {
+      icon: Layout,
+      title: "Full-Stack Web & Interfaces",
+      desc: "Modern, responsive client applications using Next.js (App Router), React, TypeScript, and Tailwind CSS. Focused on zero-jank performance and strict accessibility.",
+    },
+    {
+      icon: Cpu,
+      title: "Systems & Embedded Hardware",
+      desc: "Hands-on experience with ESP32 microcontrollers, C/C++, IoT telemetry, and smart sensor metering. Passionate about embedded systems and drone avionics.",
+    },
+  ];
 
   return (
-    <Section id="about">
-      <Reveal width="100%">
-        <div className="flex flex-col items-center mb-10 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
-            About <GradientText animate>Me</GradientText>
+    <Section id="about" className="border-t border-border/60">
+      <div className="space-y-10">
+        {/* Section Header */}
+        <div className="space-y-2">
+          <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            Background & Focus
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            Engineering from hardware to web scale
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-white to-zinc-500 rounded-full" />
         </div>
-      </Reveal>
-      {/* Who I Am - Full Width Card */}
-      <Reveal>
-        <div className="glass-card p-6 md:p-10 rounded-3xl relative overflow-hidden group border-primary/10 mb-8">
-          <h3 className="text-2xl font-bold mb-6 text-foreground">Who I Am</h3>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-            I'm a passionate developer with expertise in building modern web
-            applications. With a keen eye for design and a love for clean code,
-            I create digital experiences that are both beautiful and functional.
-          </p>
 
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            When I'm not coding, you'll find me exploring new technologies,
-            contributing to open-source projects, or sharing knowledge with the
-            developer community.
-          </p>
+        {/* Narrative Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-foreground/80 leading-relaxed text-sm sm:text-base">
+          <div className="space-y-4">
+            <p>
+              I am a software engineer and founder based in Abuja, Nigeria,
+              currently in my final year of Computer Science at{" "}
+              <strong className="text-foreground">
+                Modibbo Adama University (MAU), Yola
+              </strong>{" "}
+              (graduating 2026).
+            </p>
+            <p>
+              My journey began in 2022 with a deep fascination for how software
+              coordinates complex physical and business operations. That
+              curiosity led to founding{" "}
+              <strong className="text-foreground">Mercanest</strong>, a
+              CAC-registered IT business where we build inventory and
+              multi-merchant store software for retail merchants and
+              enterprises.
+            </p>
+          </div>
 
-          <div className="flex flex-wrap gap-3 pt-4">
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className="px-4 py-2 bg-background/50 text-foreground/90 rounded-full text-sm font-medium border border-white/5 hover:border-primary/30 hover:bg-primary/10 transition-colors cursor-default"
-              >
-                {skill}
-              </span>
-            ))}
+          <div className="space-y-4">
+            <p>
+              For my final-year thesis, I am developing a{" "}
+              <strong className="text-foreground">
+                multi-tenant resource isolation framework
+              </strong>
+              —investigating how shared systems can enforce CPU, memory, and
+              database isolation without bloated infrastructure overhead.
+            </p>
+            <p>
+              When I step away from web frameworks, I build smart hardware
+              prototypes with ESP32 microcontrollers—such as{" "}
+              <strong className="text-foreground">PowerWatch</strong> for energy
+              telemetry—with the long-term ambition of applying embedded systems
+              to autonomous drones.
+            </p>
           </div>
         </div>
-      </Reveal>
 
-      {/* Skill Cards - Responsive Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Reveal delay={0.1}>
-          <div className="glass-card p-6 rounded-3xl border-primary/10 hover:border-primary/30 transition-colors group h-full">
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-300">
-                <Terminal className="w-8 h-8" />
+        {/* Core Pillars */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          {engineeringPillars.map((pillar) => (
+            <div
+              key={pillar.title}
+              className="p-5 rounded-2xl border border-border/70 bg-card/40 hover:bg-card/80 transition-colors space-y-3"
+            >
+              <div className="w-9 h-9 rounded-xl bg-secondary/80 flex items-center justify-center text-foreground">
+                <pillar.icon className="w-4 h-4" />
               </div>
-              <div>
-                <h4 className="font-bold text-xl mb-2 text-foreground">
-                  Frontend Development
-                </h4>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  Creating responsive, interactive user interfaces with React,
-                  Next.js, and modern CSS frameworks like Tailwind.
-                </p>
-              </div>
+              <h3 className="font-semibold text-sm sm:text-base text-foreground">
+                {pillar.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                {pillar.desc}
+              </p>
             </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.2}>
-          <div className="glass-card p-6 rounded-3xl border-primary/10 hover:border-primary/30 transition-colors group h-full">
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="p-4 rounded-2xl bg-zinc-500/10 text-zinc-400 group-hover:scale-110 transition-transform duration-300">
-                <Cpu className="w-8 h-8" />
-              </div>
-              <div>
-                <h4 className="font-bold text-xl mb-2 text-foreground">
-                  Backend Development
-                </h4>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  Building robust APIs and server-side applications with
-                  Node.js, Express, and databases.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.3}>
-          <div className="glass-card p-6 rounded-3xl border-primary/10 hover:border-primary/30 transition-colors group h-full">
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="p-4 rounded-2xl bg-zinc-600/10 text-zinc-300 group-hover:scale-110 transition-transform duration-300">
-                <Palette className="w-8 h-8" />
-              </div>
-              <div>
-                <h4 className="font-bold text-xl mb-2 text-foreground">
-                  UI/UX Design
-                </h4>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  Designing intuitive interfaces with attention to user
-                  experience, accessibility, and visual aesthetics.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Reveal>
+          ))}
+        </div>
       </div>
     </Section>
   );
