@@ -34,7 +34,7 @@ export function Hero() {
         <div className="flex flex-wrap items-center gap-2">
           <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono text-muted-foreground bg-secondary/60 border border-border/60 shrink-0">
             <MapPin className="w-3 h-3 shrink-0" />
-            <span>Abuja, Nigeria (Remote)</span>
+            <span>Abuja, Nigeria</span>
           </div>
         </div>
 
@@ -51,7 +51,7 @@ export function Hero() {
 
           <div className="relative w-18 h-18 sm:w-24 sm:h-24 rounded-2xl overflow-hidden ring-1 ring-border/80 shadow-md bg-secondary shrink-0">
             <Image
-              src="/hassane.png"
+              src="/headshot.jpeg"
               alt="Hassan Saidu"
               fill
               sizes="(max-width: 640px) 72px, 96px"

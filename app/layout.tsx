@@ -33,14 +33,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if ('serviceWorker' in navigator) {
+                  navigator.serviceWorker.getRegistrations().then(function(regs) {
+                    for (var r of regs) r.unregister();
+                  });
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased min-h-screen bg-background text-foreground selection:bg-zinc-800 selection:text-white">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider defaultTheme="dark">
           <div className="relative flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow pt-20 md:pt-24">{children}</main>
